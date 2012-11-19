@@ -1,4 +1,7 @@
 #!/usr/bin/python
+# Copyright (C) 2012 nwmaltego Developer.
+# This file is part of nwmaltego - https://github.com/bostonlink/nwmaltego
+# See the file 'LICENSE' for copying permission.
 
 # Netwitness API script that returns the queryable language definitions of all meta within NW
 # Author: David Bressler (@bostonlink)
