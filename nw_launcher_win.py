@@ -1,4 +1,7 @@
 #!/usr/bin/python
+# Copyright (C) 2012 nwmaltego Developer.
+# This file is part of nwmaltego - https://github.com/bostonlink/nwmaltego
+# See the file 'LICENSE' for copying permission.
 
 # Maltego transform to launch netwitness on an IP address entity
 # Author: David Bressler (@bostonlink)
