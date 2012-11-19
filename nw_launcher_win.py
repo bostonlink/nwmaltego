@@ -12,7 +12,18 @@ ip_entity = sys.argv[1]
 
 where_clause = 'ip.src=%s || ip.dst=%s' % (ip_entity, ip_entity)
 
-base_url = "nw://10.36.129.90/?collection=ISDISNWC&"
+conf = open('netwitness.conf', 'r')
+config = conf.readlines()
+conf.close()
+
+for line in config:
+
+    if 'NW_CONCENTRATOR_IP' in line:
+	
+	split = line.strip().split('=')
+	nwc_ip = split[1].lstrip("'").rstrip("'")
+
+base_url = "nw://%s/?collection=ISDISNWC&" % nwc_ip
 params_dic = {}
 params_dic['name'] = "Maltego"
 params_dic['where'] = where_clause
