@@ -2,7 +2,6 @@
 ==========
 
 Author: David Bressler (@bostonlink)
-=====================================
 
 About
 ======
