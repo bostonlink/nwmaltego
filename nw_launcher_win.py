@@ -36,7 +36,7 @@ nw_path = "C:\Program Files\NetWitness\NetWitness 9.7\Investigator\NwInvestigato
 
 print """<MaltegoMessage>
 <MaltegoTransformResponseMessage>
-    <Entities>
+        <Entities>
 	</Entities>
 </MaltegoTransformResponseMessage>
 </MaltegoMessage> """
