@@ -25,7 +25,7 @@ Listing of all current Netwitness Maltego transforms and the filename and entity
 
 maltego.IPv4Address (Entity)
 
-netwitness.NWIPDsttoThreat - nw_ip_dst_threat.py
+netwitness.NWIPDsttoThreat - nw_ip_dst_threat.py  return
 netwitness.NWIPSourcetoThreat - nw_ip_src_threat.py
 netwitness.NWIPSRCandDSTtoThreat - nw_ipsrc_dst_threat.py
 netwitness.NWIPtoFileType - nw_ip_2_filetype.py
