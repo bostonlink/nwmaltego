@@ -43,7 +43,7 @@ for dic in fields_list:
     if '&' in value:
         new_value = value.replace('&', '&amp;')
 
-        print """       <Entity Type="netwitness.NWThreatNoIP">
+        print """       <Entity Type="netwitness.NWThreat">
             <Value>%s</Value>
             <AdditionalFields>
                 <Field Name="ip" DisplayName="IP Destination Address">%s</Field>
@@ -56,7 +56,7 @@ for dic in fields_list:
 
     else:
 
-        print """       <Entity Type="davidbressler.NWThreat">
+        print """       <Entity Type="netwitness.NWThreat">
             <Value>%s</Value>
             <AdditionalFields>
                 <Field Name="ip" DisplayName="IP Destination Address">%s</Field>
