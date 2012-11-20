@@ -6,7 +6,10 @@
 # Netwitness API script that returns the queryable language definitions of all meta within NW
 # Author: David Bressler (@bostonlink)
 
-import urllib2, urllib, nwmodule, json
+import sys
+import urllib2, urllib, json
+
+from lib import nwmodule
 
 # Authenticate to the NW Concentrator via HTTP basic auth
 
