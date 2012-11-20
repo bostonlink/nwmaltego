@@ -18,7 +18,7 @@ conf.close()
 
 for line in config:
 
-    if 'NW_CONCENTRATOR_IP' in line:
+    if 'CONCENTRATOR_IP' in line:
 	
 	split = line.strip().split('=')
 	nwc_ip = split[1].lstrip("'").rstrip("'")
