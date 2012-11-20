@@ -115,6 +115,5 @@ Rich Popson (@Rastafari0728)<br/>
 	- nwmaltego QA Tester<br/>
 
 Paterva (@Paterva)<br/>
-Jonathan Cran (@jcran)<br/>
 MassHackers (@MassHackers)<br/>
 
