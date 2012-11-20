@@ -72,6 +72,40 @@ netwitness.NWUserAgent (Entity)<br/>
 Installation
 -------------
 
+[Linux and OSX]
+
+git clone the repository  
+
+'git clone git://github.com/bostonlink/nwmaltego.git'  
+
+Then move the repo to the /opt/ directory
+
+'mv nwmaltego/ /opt/'
+
+Note: The Maltego configuration files have explicit references to the directories that hold the transforms.
+It is possible to change the location of the local transforms however, you will have to edit all of the imported
+transforms and edit the working directory of all the transforms.
+
+Edit the netwitness.conf file with your Netwitness environment settings
+
+Import the nwmaltego-config.mtgx file into Maltego and you should be good to go
+
+[Windows]
+
+git clone the repository 
+
+'git clone git://github.com/bostonlink/nwmaltego.git'
+
+Then move the repo to the root of C:\
+
+Note: The Maltego configuration files have explicit references to the directories that hold the transforms.
+It is possible to change the location of the local transforms however, you will have to edit all of the imported
+transforms and edit the working directory of all the transforms.
+
+Edit the netwitness.conf file with your Netwitness environment settings
+
+Import the nwmaltego-config.mtgx file into Maltego and you should be good to go
+
 Special Thanks!!
 -----------------
 
