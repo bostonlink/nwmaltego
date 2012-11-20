@@ -114,7 +114,7 @@ Rich Popson (@Rastafari0728)<br/>
 	- nwmaltego Idea Contributor<br/>
 	- nwmaltego QA Tester<br/>
 
-Paterva (@Paterva)
-Jonathan Cran (@jcran)
-MassHackers (@MassHackers)
+Paterva (@Paterva)<br/>
+Jonathan Cran (@jcran)<br/>
+MassHackers (@MassHackers)<br/>
 
