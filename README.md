@@ -111,8 +111,8 @@ Special Thanks!!
 
 Rich Popson (@Rastafari0728)<br/>
 	- Drinking Partner<br/>
-	- Idea Contributor to the project<br/>
-	- QA Tester to the project<br/>
+	- nwmaltego Idea Contributor<br/>
+	- nwmaltego QA Tester<br/>
 
 
 
