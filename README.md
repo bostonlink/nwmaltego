@@ -90,7 +90,7 @@ transforms and edit the working directory of all the transforms.
 
 Edit the netwitness.conf file with your Netwitness environment settings
 
-Import the nwmaltego-config.mtz file into Maltego and you should be good to go
+Import the import/nwmaltego-config.mtz file into Maltego and you should be good to go
 
 [Windows]
 
@@ -98,7 +98,11 @@ git clone the repository
 
 'git clone git://github.com/bostonlink/nwmaltego.git'
 
+Note: If you download the zip file from github it will name the file and directory nwmaltego-master. Rename this to nwmaltego.
+
 Then move the repo to the root of C:\
+
+Example: 'C:\nwmaltego' should store the contents of the repo.
 
 Note: The Maltego configuration files have explicit references to the directories that hold the transforms.
 It is possible to change the location of the local transforms however, you will have to edit all of the imported
@@ -106,7 +110,7 @@ transforms and edit the working directory of all the transforms.
 
 Edit the netwitness.conf file with your Netwitness environment settings
 
-Import the nwmaltego-config-windows.mtz file into Maltego and you should be good to go
+Import the import/nwmaltego-config-windows.mtz file into Maltego and you should be good to go
 
 Special Thanks!!
 -----------------
