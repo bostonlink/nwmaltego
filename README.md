@@ -72,6 +72,8 @@ netwitness.NWUserAgent (Entity)<br/>
 Installation
 -------------
 
+The only multiplatform dependency is Python 2.7
+
 [Linux and OSX]
 
 git clone the repository  
