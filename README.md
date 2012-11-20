@@ -88,7 +88,7 @@ transforms and edit the working directory of all the transforms.
 
 Edit the netwitness.conf file with your Netwitness environment settings
 
-Import the nwmaltego-config.mtgx file into Maltego and you should be good to go
+Import the nwmaltego-config.mtz file into Maltego and you should be good to go
 
 [Windows]
 
@@ -104,7 +104,7 @@ transforms and edit the working directory of all the transforms.
 
 Edit the netwitness.conf file with your Netwitness environment settings
 
-Import the nwmaltego-config.mtgx file into Maltego and you should be good to go
+Import the nwmaltego-config-windows.mtz file into Maltego and you should be good to go
 
 Special Thanks!!
 -----------------
