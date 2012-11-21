@@ -1,9 +1,9 @@
 ﻿NWMaltego
 ==========
 
-Author: David Bressler (@bostonlink)
-Demo Video: http://a1.video3.blip.tv/0340025695473/Bostonlink-NetwitnessMaltegoIntegrationDemoNWMaltego652.m4v
-Demo Video: http://www.pentest-labs.org/blog/netwitness-maltego-integration-demo-video
+Author: David Bressler (@bostonlink)  <br/>
+Demo Video: http://a1.video3.blip.tv/0340025695473/Bostonlink-NetwitnessMaltegoIntegrationDemoNWMaltego652.m4v  <br/>
+Demo Video: http://www.pentest-labs.org/blog/netwitness-maltego-integration-demo-video  <br/>
 
 About
 ------
