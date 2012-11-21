@@ -132,6 +132,6 @@ Rich Popson (@Rastafari0728)<br/>
 	- nwmaltego QA Tester<br/>
 
 Paterva (@Paterva)<br/>
-Nadeem Douba (@ndouba0<br/>
+Nadeem Douba (@ndouba)<br/>
 MassHackers (@MassHackers)<br/>
 
