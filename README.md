@@ -72,7 +72,6 @@ netwitness.NWUserAgent (Entity)
 TODO
 -----
 -Fix any issues that arise.<br/>
--Use Canari framework https://github.com/allfro/canari for transforms
 
 Installation
 -------------
