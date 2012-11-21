@@ -97,14 +97,14 @@ def nwQuery(id1, id2, query_string, cType, size):
     
     except urllib2.HTTPError as e:
         
-        print """
+        print '''
 	<MaltegoMessage> 
 	<MaltegoTransformResponseMessage>
 	    <UIMessages>
 		<UIMessage MessageType=”Inform”>%s</UIMessage>
 	    </UIMessages> 
 	</MaltegoTransformResponseMessage> 
-	</MaltegoMessage>""" % e
+	</MaltegoMessage>''' % e
 
 	sys.exit(0)
 
@@ -150,14 +150,14 @@ def nwSession(id1, id2, cType):
     
     except urllib2.HTTPError as e:
         
-        print """
+        print '''
         <MaltegoMessage> 
         <MaltegoTransformResponseMessage>
             <UIMessages>
                 <UIMessage MessageType=”Inform”>%s</UIMessage>
             </UIMessages> 
         </MaltegoTransformResponseMessage> 
-        </MaltegoMessage>""" % e
+        </MaltegoMessage>''' % e
 
 	sys.exit(0)
 
@@ -212,14 +212,14 @@ def nwValue(id1, id2, size, fieldname, cType, where=''):
     
     except urllib2.HTTPError as e:
         
-        print """
+        print '''
         <MaltegoMessage> 
         <MaltegoTransformResponseMessage>
             <UIMessages>
                 <UIMessage MessageType=”Inform”>%s</UIMessage>
             </UIMessages> 
         </MaltegoTransformResponseMessage> 
-        </MaltegoMessage>""" % e
+        </MaltegoMessage>''' % e
 
 	sys.exit(0)
 
@@ -267,14 +267,14 @@ def nwTimeline(time1, time2, size, cType, where=''):
     
     except urllib2.HTTPError as e:
         
-        print """
+        print '''
         <MaltegoMessage> 
         <MaltegoTransformResponseMessage>
             <UIMessages>
                 <UIMessage MessageType=”Inform”>%s</UIMessage>
             </UIMessages> 
         </MaltegoTransformResponseMessage> 
-        </MaltegoMessage>""" % e
+        </MaltegoMessage>''' % e
 
 	sys.exit(0)
 
@@ -318,13 +318,13 @@ def nwLanguage(cType):
     
     except urllib2.HTTPError as e:
         
-        print """
+        print '''
         <MaltegoMessage> 
         <MaltegoTransformResponseMessage>
             <UIMessages>
                 <UIMessage MessageType=”Inform”>%s</UIMessage>
             </UIMessages> 
         </MaltegoTransformResponseMessage> 
-        </MaltegoMessage>""" % e
+        </MaltegoMessage>''' % e
 
 	sys.exit(0)
