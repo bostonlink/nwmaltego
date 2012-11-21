@@ -76,7 +76,9 @@ TODO
 Installation
 -------------
 
-The only multiplatform dependency is Python 2.7
+The only multiplatform dependency is Python 2.7.
+
+Addtionally, Netwitness's REST API must be enabled, it is not enabled by default on some appliances. Check the docs!
 
 ### [Linux and OSX]
 
