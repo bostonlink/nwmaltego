@@ -49,14 +49,14 @@ for dic in fields_list:
     count = dic['count']
     type_d = dic['type']
     format_d = dic['format']
-    
+    # Kind of a hack but hey it works!
     if value in file_list:
 	continue
     else:
-	
+			
 	if value == '<none>':
 	    new_value = value.lstrip('<').rstrip('>')
-
+	    
 	    print """       <Entity Type="netwitness.NWFilename">
 		<Value>%s</Value>
 		<AdditionalFields>
@@ -83,7 +83,7 @@ for dic in fields_list:
             </Entity>""" % (new_value, file_type, id1, id2, type_d, count)
 
 	else:
-	    
+	    value = value.decode('ascii')
 	    print """       <Entity Type="netwitness.NWFilename">
                 <Value>%s</Value>
                 <AdditionalFields>

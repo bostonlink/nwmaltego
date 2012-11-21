@@ -45,7 +45,8 @@ for dic in fields_list:
     type_d = dic['type']
     format_d = dic['format']
     group = dic['group']
-    
+
+    # Kind of a hack but hey it works!    
     if value in ip_list:
 	continue
     else:
