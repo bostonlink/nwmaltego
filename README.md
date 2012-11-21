@@ -2,6 +2,8 @@
 ==========
 
 Author: David Bressler (@bostonlink)
+Demo Video: http://a1.video3.blip.tv/0340025695473/Bostonlink-NetwitnessMaltegoIntegrationDemoNWMaltego652.m4v
+Demo Video: http://www.pentest-labs.org/blog/netwitness-maltego-integration-demo-video
 
 About
 ------
