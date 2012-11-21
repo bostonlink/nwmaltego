@@ -22,7 +22,7 @@ Maltego Transforms
 --------------------
 
 Listing of all current Netwitness Maltego transforms and the filename and entity they are associated wtih
-
+'''
 maltego.IPv4Address (Entity)<br/>
 
 netwitness.NWIPDsttoThreat - nw_ip_dst_threat.py  <br/>
@@ -66,23 +66,29 @@ netwitness.NWFiletypetoFilename - nw_filetype_2_filename.py<br/>
 
 netwitness.NWFilename (Entity)<br/>
 
-netwitness.NWUserAgent (Entity)<br/>
+netwitness.NWUserAgent (Entity)<br/>   
 
+'''
+
+TODO
+-----
+-Fix any issues that arise.<br/>
+-Use canari framework in transforms
 
 Installation
 -------------
 
 The only multiplatform dependency is Python 2.7
 
-[Linux and OSX]
+### [Linux and OSX]
 
 git clone the repository  
 
-'git clone git://github.com/bostonlink/nwmaltego.git'  
+'''git clone git://github.com/bostonlink/nwmaltego.git
 
 Then move the repo to the /opt/ directory
 
-'mv nwmaltego/ /opt/'
+mv nwmaltego/ /opt/'''
 
 Note: The Maltego configuration files have explicit references to the directories that hold the transforms.
 It is possible to change the location of the local transforms however, you will have to edit all of the imported
@@ -92,17 +98,17 @@ Edit the netwitness.conf file with your Netwitness environment settings
 
 Import the import/nwmaltego-config.mtz file into Maltego and you should be good to go
 
-[Windows]
+### [Windows]
 
 git clone the repository 
 
-'git clone git://github.com/bostonlink/nwmaltego.git'
+'''git clone git://github.com/bostonlink/nwmaltego.git
 
 Note: If you download the zip file from github it will name the file and directory nwmaltego-master. Rename this to nwmaltego.
 
 Then move the repo to the root of C:\
 
-Example: 'C:\nwmaltego' should store the contents of the repo.
+Example: 'C:\nwmaltego' should store the contents of the repo.'''
 
 Note: The Maltego configuration files have explicit references to the directories that hold the transforms.
 It is possible to change the location of the local transforms however, you will have to edit all of the imported
@@ -111,6 +117,12 @@ transforms and edit the working directory of all the transforms.
 Edit the netwitness.conf file with your Netwitness environment settings
 
 Import the import/nwmaltego-config-windows.mtz file into Maltego and you should be good to go
+
+Notes and Issues
+-----------------
+I know I could have used a python library like Canari to craft the transforms but I opted not to.  I wanted to craft my own xml output so that I fully understood what maltego was parsing and how it outputted it's data.
+
+No Issues Reported yet.
 
 Special Thanks!!
 -----------------
@@ -121,5 +133,6 @@ Rich Popson (@Rastafari0728)<br/>
 	- nwmaltego QA Tester<br/>
 
 Paterva (@Paterva)<br/>
+Nadeem Douba (@ndouba0<br/>
 MassHackers (@MassHackers)<br/>
 
