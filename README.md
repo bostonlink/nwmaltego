@@ -119,7 +119,7 @@ Import the import/nwmaltego-config-windows.mtz file into Maltego and you should 
 
 Notes and Issues
 -----------------
-I know I could have used a python library like Canari to craft the transforms but I opted not to.  I wanted to craft my own xml output so that I fully understood what maltego was parsing and how it outputted it's data.
+I know I could have used a python library like Canari to craft the transforms but I opted not to.  I wanted to craft my own xml output so that I fully understood what maltego was parsing.
 
 No Issues Reported yet.
 
