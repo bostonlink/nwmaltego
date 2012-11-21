@@ -22,53 +22,52 @@ Maltego Transforms
 --------------------
 
 Listing of all current Netwitness Maltego transforms and the filename and entity they are associated wtih
-'''
-maltego.IPv4Address (Entity)<br/>
+```
+maltego.IPv4Address (Entity)
 
-netwitness.NWIPDsttoThreat - nw_ip_dst_threat.py  <br/>
-netwitness.NWIPSourcetoThreat - nw_ip_src_threat.py  <br/>
-netwitness.NWIPSRCandDSTtoThreat - nw_ipsrc_dst_threat.py <br/>
-netwitness.NWIPtoFileType - nw_ip_2_filetype.py<br/>
-netwitness.NWIPtoFilename - nw_ip_2_filename.py<br/>
-netwitness.NWIPdestinationtoIPSource - nw_ipdst_2_ip_src.py<br/>
-netwitness.NWIPSourcetoIPDestination - nw_ipsrc_2_ip_dst.py<br/>
-netwitness.NWIPtoUserAgent - nw_ip_2_UA.py<br/>
-netwitness.NWIPtoHostnameAlias - nw_ip_2_hostname_alias.py<br/>
-netwitness.LaunchNetwitness - nw_launcher_win.py (Windows Only Transform)<br/>
+netwitness.NWIPDsttoThreat - nw_ip_dst_threat.py
+netwitness.NWIPSourcetoThreat - nw_ip_src_threat.py
+netwitness.NWIPSRCandDSTtoThreat - nw_ipsrc_dst_threat.py
+netwitness.NWIPtoFileType - nw_ip_2_filetype.py
+netwitness.NWIPtoFilename - nw_ip_2_filename.py
+netwitness.NWIPdestinationtoIPSource - nw_ipdst_2_ip_src.py
+netwitness.NWIPSourcetoIPDestination - nw_ipsrc_2_ip_dst.py
+netwitness.NWIPtoUserAgent - nw_ip_2_UA.py
+netwitness.NWIPtoHostnameAlias - nw_ip_2_hostname_alias.py
+netwitness.LaunchNetwitness - nw_launcher_win.py (Windows Only Transform)
 
-maltego.Phrase (Entity)<br/>
+maltego.Phrase (Entity)
 
-netwitness.NWPhrasetoThreat - nw_phrase_2_threat.py<br/>
+netwitness.NWPhrasetoThreat - nw_phrase_2_threat.py
 
-netwitness.NWThreatNOIP (Entity)<br/>
+netwitness.NWThreatNOIP (Entity)
     
-netwitness.NWThreatNoIPtoAllIPAddresses - nw_threat_2_ip_all.py<br/>
-netwitness.NWThreatNOIPtoFilename - nw_threat_2_filename.py<br/>
-netwitness.NWThreatNOIPtoFileAttachment - nw_threat_no_ip_2_file_attachment.py<br/>
-netwitness.NWThreatNoIPtoIPSrc - nw_threat_noip_2_ip_src.py<br/>
-netwitness.NWThreatNoIPtoIPDst - nw_threat_noip_2_ip_dst.py<br/>
-netwitness.NWThreatNOIPtoUserAgent - nw_threat_no_ip_2_UA.py<br/>
+netwitness.NWThreatNoIPtoAllIPAddresses - nw_threat_2_ip_all.py
+netwitness.NWThreatNOIPtoFilename - nw_threat_2_filename.py
+netwitness.NWThreatNOIPtoFileAttachment - nw_threat_no_ip_2_file_attachment.py
+netwitness.NWThreatNoIPtoIPSrc - nw_threat_noip_2_ip_src.py
+netwitness.NWThreatNoIPtoIPDst - nw_threat_noip_2_ip_dst.py
+netwitness.NWThreatNOIPtoUserAgent - nw_threat_no_ip_2_UA.py
 
-netwitness.NWThreat (Entity)<br/>
+netwitness.NWThreat (Entity)
 
-netwitness.NWThreattoIPDestination - nw_threat_2_ip_dst.py<br/>
-netwitness.NWThreattoIPSource - nw_threat_2_ip_src.py<br/>
-netwitness.NWThreattoFiletype - nw_threat_2_filetype.py<br/>
-netwitness.NWThreattoFilename - nw_threat_2_filename.py<br/>
-netwitness.NWThreattoFileAttachment - nw_threat_2_file_attachment.py<br/>
-netwitness.NWThreattoUserAgent - nw_threat_2_UA.py<br/>
-netwitness.NWThreattoIPall - nw_threat_2_ip_all.py<br/>
+netwitness.NWThreattoIPDestination - nw_threat_2_ip_dst.py
+netwitness.NWThreattoIPSource - nw_threat_2_ip_src.py
+netwitness.NWThreattoFiletype - nw_threat_2_filetype.py
+netwitness.NWThreattoFilename - nw_threat_2_filename.py
+netwitness.NWThreattoFileAttachment - nw_threat_2_file_attachment.py
+netwitness.NWThreattoUserAgent - nw_threat_2_UA.py
+netwitness.NWThreattoIPall - nw_threat_2_ip_all.py
 
-netwitness.NWFiletype (Entity)<br/>
+netwitness.NWFiletype (Entity)
 
-netwitness.NWFiltypetoThreat - nw_filetype_2_threat.py<br/>
-netwitness.NWFiletypetoFilename - nw_filetype_2_filename.py<br/>
+netwitness.NWFiltypetoThreat - nw_filetype_2_threat.py
+netwitness.NWFiletypetoFilename - nw_filetype_2_filename.py
 
-netwitness.NWFilename (Entity)<br/>
+netwitness.NWFilename (Entity)
 
-netwitness.NWUserAgent (Entity)<br/>   
-
-'''
+netwitness.NWUserAgent (Entity)
+```
 
 TODO
 -----
@@ -82,13 +81,13 @@ The only multiplatform dependency is Python 2.7
 
 ### [Linux and OSX]
 
-git clone the repository  
+```git clone the repository  
 
-'''git clone git://github.com/bostonlink/nwmaltego.git
+git clone git://github.com/bostonlink/nwmaltego.git
 
 Then move the repo to the /opt/ directory
 
-mv nwmaltego/ /opt/'''
+mv nwmaltego/ /opt/```
 
 Note: The Maltego configuration files have explicit references to the directories that hold the transforms.
 It is possible to change the location of the local transforms however, you will have to edit all of the imported
