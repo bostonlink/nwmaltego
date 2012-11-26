@@ -62,7 +62,7 @@ for dic in fields_list:
             </Entity>""" % (new_value, risk_phrase, id1, id2, type_d, count)
 
         else:
-	    value = value.encode('ascii', 'ignore')
+
 	    print """       <Entity Type="netwitness.NWThreatNOIP">
 		<Value>%s</Value>
 		<AdditionalFields>

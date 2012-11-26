@@ -97,7 +97,12 @@ def nwQuery(id1, id2, query_string, cType, size):
     
     except urllib2.HTTPError as e:
         
-        print e
+        print "<MaltegoMessage>\n<MaltegoTransformResponseMessage>"
+        print "   <UIMessages>"
+        print "       <UIMessage MessageType=\"Inform\">%s</UIMessage>" % e
+        print "   </UIMessages>"
+        print "</MaltegoTransformResponseMessage>\n</MaltegoMessage>"
+
 	sys.exit(0)
 
 #  Retrieves the meta id range for the session range
@@ -142,7 +147,12 @@ def nwSession(id1, id2, cType):
     
     except urllib2.HTTPError as e:
         
-        print e
+        print "<MaltegoMessage>\n<MaltegoTransformResponseMessage>"
+        print "   <UIMessages>"
+        print "       <UIMessage MessageType=\"Inform\">%s</UIMessage>" % e
+        print "   </UIMessages>"
+        print "</MaltegoTransformResponseMessage>\n</MaltegoMessage>"
+
 	sys.exit(0)
 
 # values: Performs a query and returns the matching values for a report
@@ -196,7 +206,12 @@ def nwValue(id1, id2, size, fieldname, cType, where=''):
     
     except urllib2.HTTPError as e:
         
-        print e
+        print "<MaltegoMessage>\n<MaltegoTransformResponseMessage>"
+        print "   <UIMessages>"
+        print "       <UIMessage MessageType=\"Inform\">%s</UIMessage>" % e
+        print "   </UIMessages>"
+        print "</MaltegoTransformResponseMessage>\n</MaltegoMessage>"
+
 	sys.exit(0)
 
 # timeline: Returns the count of sessions/size/packets in discrete time intervals
@@ -243,7 +258,12 @@ def nwTimeline(time1, time2, size, cType, where=''):
     
     except urllib2.HTTPError as e:
         
-        print e
+        print "<MaltegoMessage>\n<MaltegoTransformResponseMessage>"
+        print "   <UIMessages>"
+        print "       <UIMessage MessageType=\"Inform\">%s</UIMessage>" % e
+        print "   </UIMessages>"
+        print "</MaltegoTransformResponseMessage>\n</MaltegoMessage>"
+
 	sys.exit(0)
 
 # Returns all queryable fields and definitions wtihin NW
@@ -286,5 +306,10 @@ def nwLanguage(cType):
     
     except urllib2.HTTPError as e:
         
-        print e
+        print "<MaltegoMessage>\n<MaltegoTransformResponseMessage>"
+        print "   <UIMessages>"
+        print "       <UIMessage MessageType=\"Inform\">%s</UIMessage>" % e
+        print "   </UIMessages>"
+        print "</MaltegoTransformResponseMessage>\n</MaltegoMessage>"
+
 	sys.exit(0)
