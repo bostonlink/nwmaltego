@@ -30,7 +30,7 @@ ip = parse[1]
 
 where_clause = 'risk.warning="%s" && ip.src=%s || ip.dst=%s' % (risk_name, ip, ip)
 
-nwquery = nwmodule.nwValue(0, 0, 20, 'client', 'application/json', where_clause)
+nwquery = nwmodule.nwValue(0, 0, 10, 'client', 'application/json', where_clause)
 json_data = json.loads(nwquery)
 results_dic = json_data['results']
 fields_list = results_dic['fields']

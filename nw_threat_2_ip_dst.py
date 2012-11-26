@@ -34,7 +34,7 @@ for i in fields:
 
 threat_ip_dst = 'select ip.dst where risk.warning="%s" && ip.src=%s' % (risk_name, ip_src)
 
-nwquery = nwmodule.nwQuery(0, 0, threat_ip_dst, 'application/json', 10)
+nwquery = nwmodule.nwQuery(0, 0, threat_ip_dst, 'application/json', 25)
 json_data = json.loads(nwquery)
 results_dic = json_data['results']
 fields_list = results_dic['fields']

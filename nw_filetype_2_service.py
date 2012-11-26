@@ -25,7 +25,7 @@ file_type = sys.argv[1]
 field_name = 'service'
 where_clause = 'filetype="%s" && risk.warning exists' % file_type
 
-ret_data = nwmodule.nwValue(0, 0, 500, field_name, 'application/json', where_clause)
+ret_data = nwmodule.nwValue(0, 0, 25, field_name, 'application/json', where_clause)
 
 json_data = json.loads(ret_data)
 results_dic = json_data['results']

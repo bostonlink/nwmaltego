@@ -31,7 +31,7 @@ ip = parse[1]
 field_name = 'attachment'
 where_clause = 'risk.warning="%s" && ip.src=%s || ip.dst=%s' % (threat_name, ip, ip)
 
-ret_data = nwmodule.nwValue(0, 0, 20, field_name, 'application/json', where_clause)
+ret_data = nwmodule.nwValue(0, 0, 25, field_name, 'application/json', where_clause)
 
 json_data = json.loads(ret_data)
 results_dic = json_data['results']

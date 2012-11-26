@@ -26,7 +26,7 @@ ip_src = sys.argv[1]
 
 threat_ip_dst = 'select ip.dst where ip.src=%s' % ip_src
 
-nwquery = nwmodule.nwQuery(0, 0, threat_ip_dst, 'application/json', 100)
+nwquery = nwmodule.nwQuery(0, 0, threat_ip_dst, 'application/json', 10)
 json_data = json.loads(nwquery)
 results_dic = json_data['results']
 fields_list = results_dic['fields']
