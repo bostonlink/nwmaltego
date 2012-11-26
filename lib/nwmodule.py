@@ -98,6 +98,8 @@ def nwQuery(id1, id2, query_string, cType, size):
     except urllib2.HTTPError as e:
         
         print "<MaltegoMessage>\n<MaltegoTransformResponseMessage>"
+        print "   <Entities>"
+        print "   </Entities>"
         print "   <UIMessages>"
         print "       <UIMessage MessageType=\"Inform\">%s</UIMessage>" % e
         print "   </UIMessages>"
@@ -148,6 +150,8 @@ def nwSession(id1, id2, cType):
     except urllib2.HTTPError as e:
         
         print "<MaltegoMessage>\n<MaltegoTransformResponseMessage>"
+        print "   <Entities>"
+        print "   </Entities>"
         print "   <UIMessages>"
         print "       <UIMessage MessageType=\"Inform\">%s</UIMessage>" % e
         print "   </UIMessages>"
@@ -207,6 +211,8 @@ def nwValue(id1, id2, size, fieldname, cType, where=''):
     except urllib2.HTTPError as e:
         
         print "<MaltegoMessage>\n<MaltegoTransformResponseMessage>"
+        print "   <Entities>"
+        print "   </Entities>"
         print "   <UIMessages>"
         print "       <UIMessage MessageType=\"Inform\">%s</UIMessage>" % e
         print "   </UIMessages>"
@@ -259,6 +265,8 @@ def nwTimeline(time1, time2, size, cType, where=''):
     except urllib2.HTTPError as e:
         
         print "<MaltegoMessage>\n<MaltegoTransformResponseMessage>"
+        print "   <Entities>"
+        print "   </Entities>"
         print "   <UIMessages>"
         print "       <UIMessage MessageType=\"Inform\">%s</UIMessage>" % e
         print "   </UIMessages>"
@@ -307,6 +315,8 @@ def nwLanguage(cType):
     except urllib2.HTTPError as e:
         
         print "<MaltegoMessage>\n<MaltegoTransformResponseMessage>"
+        print "   <Entities>"
+        print "   </Entities>"
         print "   <UIMessages>"
         print "       <UIMessage MessageType=\"Inform\">%s</UIMessage>" % e
         print "   </UIMessages>"
