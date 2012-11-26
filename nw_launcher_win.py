@@ -23,7 +23,12 @@ for line in config:
 	split = line.strip().split('=')
 	nwc_ip = split[1].lstrip("'").rstrip("'")
 
-base_url = "nw://%s/?collection=ISDISNWC&" % nwc_ip
+    elif 'COLLECTION_NAME' in line:
+	
+	split = line.strip().split('=')
+	col_name = split[1].lstrip("'").rstrip("'")
+
+base_url = "nw://%s/?collection=%s&" % (nwc_ip, col_name)
 params_dic = {}
 params_dic['name'] = "Maltego"
 params_dic['where'] = where_clause

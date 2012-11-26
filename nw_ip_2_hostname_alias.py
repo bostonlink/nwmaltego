@@ -39,7 +39,8 @@ for dic in fields_list:
     count = dic['count']
     type_d = dic['type']
     format_d = dic['format']
-
+    
+    # Kind of a hack but hey it works!
     print """       <Entity Type="maltego.Domain">
         <Value>%s</Value>
         <AdditionalFields>

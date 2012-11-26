@@ -52,7 +52,7 @@ for dic in fields_list:
     if value in file_list:
 	continue
     else:
-	
+	# Kind of a hack but hey it works!	
 	if value == '<none>':
             new_value = value.lstrip('<').rstrip('>')
 

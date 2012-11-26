@@ -97,7 +97,7 @@ def nwQuery(id1, id2, query_string, cType, size):
     
     except urllib2.HTTPError as e:
         
-        print e    
+        print e
 	sys.exit(0)
 
 #  Retrieves the meta id range for the session range

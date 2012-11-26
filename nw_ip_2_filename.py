@@ -27,7 +27,7 @@ ip_entity = sys.argv[1]
 field_name = 'filename'
 where_clause = 'ip.src=%s || ip.dst=%s' % (ip_entity, ip_entity)
 
-ret_data = nwmodule.nwValue(0, 0, 5000, field_name, 'application/json', where_clause)
+ret_data = nwmodule.nwValue(0, 0, 25, field_name, 'application/json', where_clause)
 
 json_data = json.loads(ret_data)
 results_dic = json_data['results']
@@ -48,7 +48,8 @@ for dic in fields_list:
     count = dic['count']
     type_d = dic['type']
     format_d = dic['format']
-    
+ 
+    # Kind of a hack but hey it works!   
     if value in file_list:
 	continue
     else:

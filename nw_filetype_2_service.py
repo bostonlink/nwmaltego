@@ -44,6 +44,7 @@ for dic in fields_list:
     type_d = dic['type']
     format_d = dic['format']
     
+    # Kind of a hack but hey it works!    
     if value in service_list:
 	continue
     else:

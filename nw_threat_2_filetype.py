@@ -45,7 +45,7 @@ for dic in fields_list:
     if value in file_list:
 	continue
     else:
-
+	# Kind of a hack but hey it works!
         print """       <Entity Type="netwitness.NWFiletype">
 	    <Value>%s</Value>
 	    <AdditionalFields>

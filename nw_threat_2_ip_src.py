@@ -59,7 +59,7 @@ for dic in fields_list:
     if value in ip_list:
 	continue
     else:
-
+	# Kind of a hack but hey it works!
         print """       <Entity Type="maltego.IPv4Address">
 	        <Value>%s</Value>
 	        <AdditionalFields>

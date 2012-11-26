@@ -27,7 +27,7 @@ file_type = sys.argv[1]
 field_name = 'filename'
 where_clause = 'filetype="%s"' % file_type
 
-ret_data = nwmodule.nwValue(0, 0, 500, field_name, 'application/json', where_clause)
+ret_data = nwmodule.nwValue(0, 0, 25, field_name, 'application/json', where_clause)
 
 json_data = json.loads(ret_data)
 results_dic = json_data['results']
@@ -49,14 +49,14 @@ for dic in fields_list:
     count = dic['count']
     type_d = dic['type']
     format_d = dic['format']
-    
+    # Kind of a hack but hey it works!
     if value in file_list:
 	continue
     else:
-	
+			
 	if value == '<none>':
 	    new_value = value.lstrip('<').rstrip('>')
-
+	    
 	    print """       <Entity Type="netwitness.NWFilename">
 		<Value>%s</Value>
 		<AdditionalFields>
@@ -83,7 +83,7 @@ for dic in fields_list:
             </Entity>""" % (new_value, file_type, id1, id2, type_d, count)
 
 	else:
-	    
+	    value = value.decode('ascii')
 	    print """       <Entity Type="netwitness.NWFilename">
                 <Value>%s</Value>
                 <AdditionalFields>

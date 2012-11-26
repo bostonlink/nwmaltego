@@ -1,7 +1,4 @@
 #!/usr/bin/env python
-# Copyright (C) 2012 nwmaltego Developer.
-# This file is part of nwmaltego - https://github.com/bostonlink/nwmaltego
-# See the file 'LICENSE' for copying permission.
 
 # Maltego Phrase to NW Threat
 # Author: David Bressler (@bostonlink)
@@ -49,17 +46,33 @@ for dic in fields_list:
     if value in ip_list:
 	continue
     else:
+	# Kind of a hack but hey it works!
 
-        print """       <Entity Type="netwitness.NWThreatNOIP">
-	        <Value>%s</Value>
-	        <AdditionalFields>
-		  <Field Name="phrase" DisplayName="Phrase">%s</Field>
-		  <Field Name="metaid1" DisplayName="Meta id1">%s</Field>
-		  <Field Name="metaid2" DisplayName="Meta id2">%s</Field>
-		  <Field Name="type" DisplayName="Type">%s</Field>
-		  <Field Name="count" DisplayName="Count">%s</Field>
+	if '&' in value:
+            new_value = value.replace('&', '%amp;')
+            print """       <Entity Type="netwitness.NWThreatNOIP">
+                <Value>%s</Value>
+                <AdditionalFields>
+                    <Field Name="phrase" DisplayName="Phrase">%s</Field>
+                    <Field Name="metaid1" DisplayName="Meta id1">%s</Field>
+                    <Field Name="metaid2" DisplayName="Meta id2">%s</Field>
+                    <Field Name="type" DisplayName="Type">%s</Field>
+                    <Field Name="count" DisplayName="Count">%s</Field>
+                </AdditionalFields> 
+            </Entity>""" % (new_value, risk_phrase, id1, id2, type_d, count)
+
+        else:
+	    value = value.encode('ascii', 'ignore')
+	    print """       <Entity Type="netwitness.NWThreatNOIP">
+		<Value>%s</Value>
+		<AdditionalFields>
+		    <Field Name="phrase" DisplayName="Phrase">%s</Field>
+		    <Field Name="metaid1" DisplayName="Meta id1">%s</Field>
+		    <Field Name="metaid2" DisplayName="Meta id2">%s</Field>
+		    <Field Name="type" DisplayName="Type">%s</Field>
+		    <Field Name="count" DisplayName="Count">%s</Field>
 		</AdditionalFields> 
-	   </Entity>""" % (value, risk_phrase, id1, id2, type_d, count)
+	    </Entity>""" % (value, risk_phrase, id1, id2, type_d, count)
     
     ip_list.append(value)
 
