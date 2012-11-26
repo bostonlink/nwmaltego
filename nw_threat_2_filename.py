@@ -27,7 +27,7 @@ threat_name = sys.argv[1]
 field_name = 'filename'
 where_clause = 'risk.warning="%s"' % threat_name
 
-ret_data = nwmodule.nwValue(0, 0, 100, field_name, 'application/json', where_clause)
+ret_data = nwmodule.nwValue(0, 0, 25, field_name, 'application/json', where_clause)
 
 json_data = json.loads(ret_data)
 results_dic = json_data['results']
