@@ -23,7 +23,7 @@ risk_phrase = sys.argv[1]
 
 threat_ip_dst = 'select risk.warning where risk.warning contains %s' % risk_phrase
 
-nwquery = nwmodule.nwQuery(0, 0, threat_ip_dst, 'application/json', 100)
+nwquery = nwmodule.nwQuery(0, 0, threat_ip_dst, 'application/json', 25)
 json_data = json.loads(nwquery)
 results_dic = json_data['results']
 fields_list = results_dic['fields']
@@ -62,7 +62,7 @@ for dic in fields_list:
             </Entity>""" % (new_value, risk_phrase, id1, id2, type_d, count)
 
         else:
-	    value = value.encode('ascii', 'ignore')
+
 	    print """       <Entity Type="netwitness.NWThreatNOIP">
 		<Value>%s</Value>
 		<AdditionalFields>

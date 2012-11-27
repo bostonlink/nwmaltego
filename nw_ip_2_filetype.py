@@ -27,7 +27,7 @@ ip_entity = sys.argv[1]
 field_name = 'filetype'
 where_clause = 'ip.dst=%s || ip.src=%s' % (ip_entity, ip_entity)
 
-ret_data = nwmodule.nwValue(0, 0, 100, field_name, 'application/json', where_clause)
+ret_data = nwmodule.nwValue(0, 0, 25, field_name, 'application/json', where_clause)
 
 json_data = json.loads(ret_data)
 results_dic = json_data['results']

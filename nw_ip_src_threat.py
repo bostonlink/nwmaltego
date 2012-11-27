@@ -23,7 +23,7 @@ nwmodule.nw_http_auth()
 ip_entity = sys.argv[1]
 
 where_clause = 'ip.src=%s || ip.dst=%s' % (ip_entity, ip_entity)
-ret_data = nwmodule.nwValue(0, 0, 100, 'risk.warning', 'application/json', where_clause)
+ret_data = nwmodule.nwValue(0, 0, 25, 'risk.warning', 'application/json', where_clause)
 json_data = json.loads(ret_data)
 results_dic = json_data['results']
 fields_list = results_dic['fields']
