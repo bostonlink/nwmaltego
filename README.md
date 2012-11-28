@@ -47,10 +47,10 @@ netwitness.NWThreatNOIP (Entity)
     netwitness.NWThreatNoIPtoAllIPAddresses - nw_threat_2_ip_all.py
     netwitness.NWThreatNOIPtoFilename - nw_threat_2_filename.py
     netwitness.NWThreatNoIPtoFiletype - nw_threat_2_filetype.py
-    netwitness.NWThreatNOIPtoFileAttachment - nw_threat_no_ip_2_file_attachment.py
-    netwitness.NWThreatNoIPtoIPSrc - nw_threat_noip_2_ip_src.py
-    netwitness.NWThreatNoIPtoIPDst - nw_threat_noip_2_ip_dst.py
-    netwitness.NWThreatNOIPtoUserAgent - nw_threat_no_ip_2_UA.py
+    netwitness.NWThreatNOIPtoFileAttachment - nw_threat_2_file_attachment.py
+    netwitness.NWThreatNoIPtoIPSrc - nw_threat_2_ip_src.py
+    netwitness.NWThreatNoIPtoIPDst - nw_threat_2_ip_dst.py
+    netwitness.NWThreatNOIPtoUserAgent - nw_threat_2_UA.py
 
 netwitness.NWThreat (Entity)
 
