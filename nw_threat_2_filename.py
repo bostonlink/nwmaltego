@@ -92,7 +92,7 @@ for dic in fields_list:
                     <Field Name="type" DisplayName="Type">%s</Field>
                     <Field Name="count" DisplayName="Count">%s</Field>
                 </AdditionalFields> 
-            </Entity>""" % (new_value, threat_name, id1, id2, type_d, count)
+            </Entity>""" % (new_value, risk_name, id1, id2, type_d, count)
 
         else:
 
@@ -105,7 +105,7 @@ for dic in fields_list:
                     <Field Name="type" DisplayName="Type">%s</Field>
                     <Field Name="count" DisplayName="Count">%s</Field>
                 </AdditionalFields> 
-            </Entity>""" % (value, threat_name, id1, id2, type_d, count)
+            </Entity>""" % (value, risk_name, id1, id2, type_d, count)
     
     file_list.append(value)
 
