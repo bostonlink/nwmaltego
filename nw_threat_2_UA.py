@@ -21,24 +21,22 @@ trans_header = """<MaltegoMessage>
 nwmodule.nw_http_auth()
 
 # Parsing returned entity values and additional fields
-
-if len(sys.argv) == 3:
     
-    risk_name = sys.argv[1]
-    fields = sys.argv[2].split('#')
+risk_name = sys.argv[1]
+fields = sys.argv[2].split('#')
 
-    for i in fields:
+for i in fields:
 
-	if 'ip' in i:
+    if 'ip' in i:
 
-	    parse = i.split('=')
-	    ip = parse[1]
-	    where_clause = 'risk.warning="%s" && ip.src=%s || ip.dst=%s' % (risk_name, ip, ip)
+	parse = i.split('=')
+	ip = parse[1]
+	where_clause = 'risk.warning="%s" && ip.src=%s || ip.dst=%s' % (risk_name, ip, ip)
 
-else:
+    else:
     
-    risk_name = sys.argv[1]
-    where_clause = 'risk.warning="%s"' % (risk_name)
+	risk_name = sys.argv[1]
+	where_clause = 'risk.warning="%s"' % (risk_name)
 
 # NW REST API Query
 

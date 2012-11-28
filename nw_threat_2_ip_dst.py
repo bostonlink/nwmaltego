@@ -21,24 +21,22 @@ trans_header = """<MaltegoMessage>
 nwmodule.nw_http_auth()
 
 # NW REST API Query
-
-if len(sys.argv) == 3:
     
-    risk_name = sys.argv[1]
-    fields = sys.argv[2].split('#')
+risk_name = sys.argv[1]
+fields = sys.argv[2].split('#')
 
-    for i in fields:
+for i in fields:
 
-        if 'ip' in i:
+    if 'ip' in i:
 
-            parse = i.split('=')
-            ip = parse[1]
-            query = 'select ip.dst where risk.warning="%s" && ip.src=%s' % (risk_name, ip)
+        parse = i.split('=')
+        ip = parse[1]
+        query = 'select ip.dst where risk.warning="%s" && ip.src=%s' % (risk_name, ip)
 
-else:
+    else:
     
-    risk_name = sys.argv[1]
-    query = 'select ip.dst where risk.warning="%s"' % risk_name
+	risk_name = sys.argv[1]
+	query = 'select ip.dst where risk.warning="%s"' % risk_name
 
 nwquery = nwmodule.nwQuery(0, 0, query, 'application/json', 25)
 json_data = json.loads(nwquery)

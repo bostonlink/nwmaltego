@@ -25,23 +25,18 @@ nwmodule.nw_http_auth()
 risk_name = sys.argv[1]
 fields = sys.argv[2].split('#')
 
-if len(sys.argv) == 3:
+for i in fields:
+
+    if 'ip' in i:
+
+        parse = i.split('=')
+        ip = parse[1]
+        where_clause = 'risk.warning="%s" && ip.src=%s || ip.dst=%s' % (risk_name, ip, ip)
+
+    else:
     
-    risk_name = sys.argv[1]
-    fields = sys.argv[2].split('#')
-
-    for i in fields:
-
-        if 'ip' in i:
-
-            parse = i.split('=')
-            ip = parse[1]
-            where_clause = 'risk.warning="%s" && ip.src=%s || ip.dst=%s' % (risk_name, ip, ip)
-
-else:
-    
-    risk_name = sys.argv[1]
-    where_clause = 'risk.warning="%s"' % (risk_name)
+	risk_name = sys.argv[1]
+	where_clause = 'risk.warning="%s"' % (risk_name)
 
 field_name = 'filename'
 
