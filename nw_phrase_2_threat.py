@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+# Copyright (C) 2012 nwmaltego Developer.
+# This file is part of nwmaltego - https://github.com/bostonlink/nwmaltego
+# See the file 'LICENSE' for copying permission.
 
 # Maltego Phrase to NW Threat
 # Author: David Bressler (@bostonlink)
