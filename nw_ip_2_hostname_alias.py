@@ -44,7 +44,7 @@ for dic in fields_list:
     print """       <Entity Type="maltego.Domain">
         <Value>%s</Value>
         <AdditionalFields>
-            <Field Name="ip" DisplayName="IP Destination Address">%s</Field>
+            <Field Name="ip" DisplayName="IP Address">%s</Field>
             <Field Name="metaid1" DisplayName="Meta id1">%s</Field>
             <Field Name="metaid2" DisplayName="Meta id2">%s</Field>
             <Field Name="type" DisplayName="Type">%s</Field>
