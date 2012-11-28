@@ -60,7 +60,7 @@ for dic in fields_list:
             print """       <Entity Type="netwitness.NWFilename">
                 <Value>%s</Value>
                 <AdditionalFields>
-                    <Field Name="risk" DisplayName="Threat Name">%s</Field>
+                    <Field Name="ip" DisplayName="IP Address">%s</Field>
                     <Field Name="metaid1" DisplayName="Meta id1">%s</Field>
                     <Field Name="metaid2" DisplayName="Meta id2">%s</Field>
                     <Field Name="type" DisplayName="Type">%s</Field>
@@ -74,7 +74,7 @@ for dic in fields_list:
             print """       <Entity Type="netwitness.NWFilename">
                 <Value>%s</Value>
                 <AdditionalFields>
-                    <Field Name="risk" DisplayName="Threat Name">%s</Field>
+                    <Field Name="ip" DisplayName="IP Address">%s</Field>
                     <Field Name="metaid1" DisplayName="Meta id1">%s</Field>
                     <Field Name="metaid2" DisplayName="Meta id2">%s</Field>
                     <Field Name="type" DisplayName="Type">%s</Field>
@@ -87,7 +87,7 @@ for dic in fields_list:
             print """       <Entity Type="netwitness.NWFilename">
                 <Value>%s</Value>
                 <AdditionalFields>
-                    <Field Name="risk" DisplayName="Threat Name">%s</Field>
+                    <Field Name="ip" DisplayName="IP Address">%s</Field>
                     <Field Name="metaid1" DisplayName="Meta id1">%s</Field>
                     <Field Name="metaid2" DisplayName="Meta id2">%s</Field>
                     <Field Name="type" DisplayName="Type">%s</Field>
