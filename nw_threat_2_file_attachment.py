@@ -79,7 +79,7 @@ for dic in fields_list:
                     <Field Name="type" DisplayName="Type">%s</Field>
                     <Field Name="count" DisplayName="Count">%s</Field>
                 </AdditionalFields> 
-            </Entity>""" % (new_value, threat_name, ip, id1, id2, type_d, count)
+            </Entity>""" % (new_value, risk_name, ip, id1, id2, type_d, count)
 
         elif '&' in value:
             new_value = value.replace('&', '%amp;')
@@ -94,7 +94,7 @@ for dic in fields_list:
                     <Field Name="Type" DisplayName="Type">%s</Field>
                     <Field Name="Count" DisplayName="Count">%s</Field>
                 </AdditionalFields> 
-            </Entity>""" % (new_value, threat_name, ip, id1, id2, type_d, count)
+            </Entity>""" % (new_value, risk_name, ip, id1, id2, type_d, count)
 
         else:
 
@@ -108,7 +108,7 @@ for dic in fields_list:
                     <Field Name="Type" DisplayName="Type">%s</Field>
                     <Field Name="Count" DisplayName="Count">%s</Field>
                 </AdditionalFields> 
-            </Entity>""" % (value, threat_name, ip, id1, id2, type_d, count)
+            </Entity>""" % (value, risk_name, ip, id1, id2, type_d, count)
     
     file_list.append(value)
 
