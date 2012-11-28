@@ -22,14 +22,26 @@ nwmodule.nw_http_auth()
 
 # NW REST API Query amd results
 
-threat_name = sys.argv[1]
-fields = sys.argv[2].split('#')
-parse = fields[1]
-parse = parse.split('=')
-ip = parse[1]
+if len(sys.argv) == 3:
+    
+    risk_name = sys.argv[1]
+    fields = sys.argv[2].split('#')
+
+    for i in fields:
+
+        if 'ip' in i:
+
+            parse = i.split('=')
+            ip = parse[1]
+            where_clause = 'risk.warning="%s" && ip.src=%s || ip.dst=%s' % (risk_name, ip, ip)
+
+else:
+    
+    risk_name = sys.argv[1]
+
+    where_clause = 'risk.warning="%s"' % (risk_name)
 
 field_name = 'attachment'
-where_clause = 'risk.warning="%s" && ip.src=%s || ip.dst=%s' % (threat_name, ip, ip)
 
 ret_data = nwmodule.nwValue(0, 0, 25, field_name, 'application/json', where_clause)
 

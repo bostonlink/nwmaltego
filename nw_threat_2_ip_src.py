@@ -22,21 +22,27 @@ nwmodule.nw_http_auth()
 
 # NW REST API Query
 
-risk_name = sys.argv[1]
-fields = sys.argv[2].split('#')
+if len(sys.argv) == 3:
+    
+    risk_name = sys.argv[1]
+    fields = sys.argv[2].split('#')
 
-for i in fields:
+    for i in fields:
 
-    if 'ip' in i:
+        if 'ip' in i:
 
-        parse = i.split('=')
-        ip_dst = parse[1]
+            parse = i.split('=')
+            ip = parse[1]
+            query = 'select ip.src where risk.warning="%s" && ip.dst=%s' % (risk_name, ip)
+
+else:
+    
+    risk_name = sys.argv[1]
+    query = 'select ip.src where risk.warning="%s"' % risk_name
 
 # NW Query
 
-threat_ip_dst = 'select ip.src where risk.warning="%s" && ip.dst=%s' % (risk_name, ip_dst)
-
-nwquery = nwmodule.nwQuery(0, 0, threat_ip_dst, 'application/json', 25)
+nwquery = nwmodule.nwQuery(0, 0, query, 'application/json', 25)
 json_data = json.loads(nwquery)
 results_dic = json_data['results']
 fields_list = results_dic['fields']
