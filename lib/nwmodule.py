@@ -101,7 +101,7 @@ def nwQuery(id1, id2, query_string, cType, size):
         print "   <Entities>"
         print "   </Entities>"
         print "   <UIMessages>"
-        print "       <UIMessage MessageType=\"Warn\">The Transform has returned: %s</UIMessage>" % e
+        print "       <UIMessage MessageType=\"PartialError\">The Transform has returned: %s</UIMessage>" % e
         print "   </UIMessages>"
         print "</MaltegoTransformResponseMessage>\n</MaltegoMessage>"
 
@@ -153,7 +153,7 @@ def nwSession(id1, id2, cType):
         print "   <Entities>"
         print "   </Entities>"
         print "   <UIMessages>"
-        print "       <UIMessage MessageType=\"Warn\">The Transform has returned: %s</UIMessage>" % e
+        print "       <UIMessage MessageType=\"PartialError\">The Transform has returned: %s</UIMessage>" % e
         print "   </UIMessages>"
         print "</MaltegoTransformResponseMessage>\n</MaltegoMessage>"
 
@@ -214,7 +214,7 @@ def nwValue(id1, id2, size, fieldname, cType, where=''):
         print "   <Entities>"
         print "   </Entities>"
         print "   <UIMessages>"
-        print "       <UIMessage MessageType=\"Warn\">The Transform has returned: %s</UIMessage>" % e
+        print "       <UIMessage MessageType=\"PartialError\">The Transform has returned: %s</UIMessage>" % e
         print "   </UIMessages>"
         print "</MaltegoTransformResponseMessage>\n</MaltegoMessage>"
 
@@ -268,7 +268,7 @@ def nwTimeline(time1, time2, size, cType, where=''):
         print "   <Entities>"
         print "   </Entities>"
         print "   <UIMessages>"
-        print "       <UIMessage MessageType=\"Warn\">The Transform has returned: %s</UIMessage>" % e
+        print "       <UIMessage MessageType=\"PartialError\">The Transform has returned: %s</UIMessage>" % e
         print "   </UIMessages>"
         print "</MaltegoTransformResponseMessage>\n</MaltegoMessage>"
 
@@ -318,7 +318,7 @@ def nwLanguage(cType):
         print "   <Entities>"
         print "   </Entities>"
         print "   <UIMessages>"
-        print "       <UIMessage MessageType=\"Warn\">The Transform has returned: %s</UIMessage>" % e
+        print "       <UIMessage MessageType=\"PartialError\">The Transform has returned: %s</UIMessage>" % e
         print "   </UIMessages>"
         print "</MaltegoTransformResponseMessage>\n</MaltegoMessage>"
 
