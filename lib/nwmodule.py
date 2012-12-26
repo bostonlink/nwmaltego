@@ -19,24 +19,18 @@ def nw_http_auth():
     conf.close()
 
     for line in config:
-	
-	try:
-
-	    if 'USERNAME' in line:
-		usr_list = line.strip().split('=')
-		nwusr = str(usr_list[1]).lstrip("'").rstrip("'")
-
-	    elif 'PASSWORD' in line:
-		passwd_list = line.strip().split('=')
-		nwpass = str(passwd_list[1]).lstrip("'").rstrip("'")
-
-	    elif 'NW_CONCENTRATOR' in line:
-		conc_list = line.strip().split('=')
-		nwa = str(conc_list[1]).lstrip("'").rstrip("'")
-	
-	except:
-	    
-	    return 'Authentication has failed to NW please check your netwitness.conf file'
+        try:
+            if 'USERNAME' in line:
+                usr_list = line.strip().split('=')
+                nwusr = str(usr_list[1]).lstrip("'").rstrip("'")
+            elif 'PASSWORD' in line:
+                passwd_list = line.strip().split('=')
+                nwpass = str(passwd_list[1]).lstrip("'").rstrip("'")
+            elif 'NW_CONCENTRATOR' in line:
+                conc_list = line.strip().split('=')
+                nwa = str(conc_list[1]).lstrip("'").rstrip("'")
+        except:
+            return 'Authentication has failed to NW please check your netwitness.conf file'
     
     auth_handler = urllib2.HTTPBasicAuthHandler()
     auth_handler.add_password(realm = 'NetWitness',
@@ -46,6 +40,23 @@ def nw_http_auth():
 
     opener = urllib2.build_opener(auth_handler)
     urllib2.install_opener(opener)
+
+# HTTP get function 
+def http_get(full_url):
+    try:
+        req = urllib2.Request(full_url)
+        ret = urllib2.urlopen(req)
+        return ret.read()
+    except urllib2.HTTPError as e:        
+        print "<MaltegoMessage>\n<MaltegoTransformResponseMessage>"
+        print "   <Entities>"
+        print "   </Entities>"
+        print "   <UIMessages>"
+        print "       <UIMessage MessageType=\"PartialError\">The Transform has returned: %s</UIMessage>" % e
+        print "   </UIMessages>"
+        print "</MaltegoTransformResponseMessage>\n</MaltegoMessage>"
+
+        sys.exit(0)   
 
 # Function builds full URL for NW REST API Query and returns the results
 #
@@ -66,46 +77,19 @@ def nwQuery(id1, id2, query_string, cType, size):
     conf.close()
 
     for line in config:
-
-	try:
-	    
-	    if 'NW_CONCENTRATOR' in line:
-		conc_list = line.strip().split('=')
+        try:
+            if 'NW_CONCENTRATOR' in line:
+                conc_list = line.strip().split('=')
                 nwa = str(conc_list[1]).lstrip("'").rstrip("'")
-	except:
-
-	    return 'Check the NW_CONCENTRATOR field in the netwitness.conf file and make sur eit is correct'
+        except:
+            return 'Check the NW_CONCENTRATOR field in the netwitness.conf file and make sure it is correct'
 
     base_uri = "/sdk?msg=query&"
-    params_dic = {}
-    params_dic['force-content-type'] = cType
-    params_dic['expiry'] = 600
-    params_dic['id1'] = id1
-    params_dic['id2'] = id2
-    params_dic['size'] = size
-    params_dic['query'] = query_string
-
+    params_dic = { 'force-content-type': cType, 'expiry': 600, 'id1': id1, 'id2': id2, 'size': size, 'query': query_string}
     enc_params = urllib.urlencode(params_dic)
     full_url = nwa + base_uri + enc_params
     
-    try:
-        
-        req = urllib2.Request(full_url)
-        ret = urllib2.urlopen(req)
-        ret_data = ret.read()
-        return ret_data
-    
-    except urllib2.HTTPError as e:
-        
-        print "<MaltegoMessage>\n<MaltegoTransformResponseMessage>"
-        print "   <Entities>"
-        print "   </Entities>"
-        print "   <UIMessages>"
-        print "       <UIMessage MessageType=\"PartialError\">The Transform has returned: %s</UIMessage>" % e
-        print "   </UIMessages>"
-        print "</MaltegoTransformResponseMessage>\n</MaltegoMessage>"
-
-	sys.exit(0)
+    return http_get(full_url)
 
 #  Retrieves the meta id range for the session range
 
@@ -119,45 +103,19 @@ def nwSession(id1, id2, cType):
     conf.close()
 
     for line in config:
-
         try:
-            
             if 'NW_CONCENTRATOR' in line:
                 conc_list = line.strip().split('=')
                 nwa = str(conc_list[1]).lstrip("'").rstrip("'")
-    
         except:
-
             print 'Check the NW_CONCENTRATOR field in the netwitness.conf file and make sur eit is correct'
 
     base_uri = "/sdk?msg=session&"
-    params_dic = {}
-    params_dic['force-content-type'] = cType
-    params_dic['expiry'] = 600
-    params_dic['id1'] = id1
-    params_dic['id2'] = id2
-
+    params_dic = {'force-content-type': cType, 'expiry': 600, 'id1': id1, 'id2': id2}
     enc_params = urllib.urlencode(params_dic)
     full_url = nwa + base_uri + enc_params
     
-    try:
-        
-        req = urllib2.Request(full_url)
-        ret = urllib2.urlopen(req)
-        ret_data = ret.read()
-        return ret_data
-    
-    except urllib2.HTTPError as e:
-        
-        print "<MaltegoMessage>\n<MaltegoTransformResponseMessage>"
-        print "   <Entities>"
-        print "   </Entities>"
-        print "   <UIMessages>"
-        print "       <UIMessage MessageType=\"PartialError\">The Transform has returned: %s</UIMessage>" % e
-        print "   </UIMessages>"
-        print "</MaltegoTransformResponseMessage>\n</MaltegoMessage>"
-
-	sys.exit(0)
+    return http_get(full_url)
 
 # values: Performs a query and returns the matching values for a report
 # example: nwValue(nwa, 0, 0, 100, 'risk.warning', 'text/plain')
@@ -177,48 +135,19 @@ def nwValue(id1, id2, size, fieldname, cType, where=''):
     conf.close()
 
     for line in config:
-
         try:
-            
             if 'NW_CONCENTRATOR' in line:
                 conc_list = line.strip().split('=')
                 nwa = str(conc_list[1]).lstrip("'").rstrip("'")
-    
         except:
-
             print 'Check the NW_CONCENTRATOR field in the netwitness.conf file and make sur eit is correct'
 
     base_uri = "/sdk?msg=values&"
-    params_dic = {}
-    params_dic['force-content-type'] = cType
-    params_dic['expiry'] = 600
-    params_dic['id1'] = id1
-    params_dic['id2'] = id2
-    params_dic['size'] = size
-    params_dic['fieldName'] = fieldname
-    params_dic['where'] = where
-
+    params_dic = {'force-content-type': cType, 'expiry': 600, 'id1': id1, 'id2': id2, 'size': size, 'fieldName': fieldname, 'where': where}
     enc_params = urllib.urlencode(params_dic)
     full_url = nwa + base_uri + enc_params
     
-    try:
-        
-        req = urllib2.Request(full_url)
-        ret = urllib2.urlopen(req)
-        ret_data = ret.read()
-        return ret_data
-    
-    except urllib2.HTTPError as e:
-        
-        print "<MaltegoMessage>\n<MaltegoTransformResponseMessage>"
-        print "   <Entities>"
-        print "   </Entities>"
-        print "   <UIMessages>"
-        print "       <UIMessage MessageType=\"PartialError\">The Transform has returned: %s</UIMessage>" % e
-        print "   </UIMessages>"
-        print "</MaltegoTransformResponseMessage>\n</MaltegoMessage>"
-
-	sys.exit(0)
+    http_get(full_url)
 
 # timeline: Returns the count of sessions/size/packets in discrete time intervals
 # example: 
@@ -232,47 +161,19 @@ def nwTimeline(time1, time2, size, cType, where=''):
     conf.close()
 
     for line in config:
-
         try:
-            
             if 'NW_CONCENTRATOR' in line:
                 conc_list = line.strip().split('=')
                 nwa = str(conc_list[1]).lstrip("'").rstrip("'")
-    
         except:
-
             print 'Check the NW_CONCENTRATOR field in the netwitness.conf file and make sur eit is correct'
     
     base_uri = "/sdk?msg=timeline&"
-    params_dic = {}
-    params_dic['force-content-type'] = cType
-    params_dic['expiry'] = 600
-    params_dic['time1'] = time1
-    params_dic['time2'] = time2
-    params_dic['size'] = size
-    params_dic['where'] = where
-
+    params_dic = {'force-content-type': cType, 'expiry': 600, 'time1': time1, 'time2': time2, 'size': size, 'where': where}
     enc_params = urllib.urlencode(params_dic)
     full_url = nwa + base_uri + enc_params
 
-    try:
-        
-        req = urllib2.Request(full_url)
-        ret = urllib2.urlopen(req)
-        ret_data = ret.read()
-        return ret_data
-    
-    except urllib2.HTTPError as e:
-        
-        print "<MaltegoMessage>\n<MaltegoTransformResponseMessage>"
-        print "   <Entities>"
-        print "   </Entities>"
-        print "   <UIMessages>"
-        print "       <UIMessage MessageType=\"PartialError\">The Transform has returned: %s</UIMessage>" % e
-        print "   </UIMessages>"
-        print "</MaltegoTransformResponseMessage>\n</MaltegoMessage>"
-
-	sys.exit(0)
+    return http_get(full_url)
 
 # Returns all queryable fields and definitions wtihin NW
 
@@ -285,41 +186,16 @@ def nwLanguage(cType):
     conf.close()
 
     for line in config:
-
         try:
-            
             if 'NW_CONCENTRATOR' in line:
                 conc_list = line.strip().split('=')
                 nwa = str(conc_list[1]).lstrip("'").rstrip("'")
-    
         except:
-
             print 'Check the NW_CONCENTRATOR field in the netwitness.conf file and make sur eit is correct'    
 
     base_uri = "/sdk?msg=language&"
-    params_dic = {}
-    params_dic['force-content-type'] = cType
-    params_dic['expiry'] = 600
-    params_dic['size'] = 200
-
+    params_dic = {'force-content-type': cType, 'expiry': 600, 'size': 200}
     enc_params = urllib.urlencode(params_dic)
     full_url = nwa + base_uri + enc_params
 
-    try:
-        
-        req = urllib2.Request(full_url)
-        ret = urllib2.urlopen(req)
-        ret_data = ret.read()
-        return ret_data
-    
-    except urllib2.HTTPError as e:
-        
-        print "<MaltegoMessage>\n<MaltegoTransformResponseMessage>"
-        print "   <Entities>"
-        print "   </Entities>"
-        print "   <UIMessages>"
-        print "       <UIMessage MessageType=\"PartialError\">The Transform has returned: %s</UIMessage>" % e
-        print "   </UIMessages>"
-        print "</MaltegoTransformResponseMessage>\n</MaltegoMessage>"
-
-	sys.exit(0)
+    return http_get(full_url)
