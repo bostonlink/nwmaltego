@@ -46,7 +46,8 @@ def http_get(full_url):
     try:
         req = urllib2.Request(full_url)
         ret = urllib2.urlopen(req)
-        return ret.read()
+        ret_data = ret.read()
+        return ret_data
     except urllib2.HTTPError as e:        
         print "<MaltegoMessage>\n<MaltegoTransformResponseMessage>"
         print "   <Entities>"
@@ -147,7 +148,7 @@ def nwValue(id1, id2, size, fieldname, cType, where=''):
     enc_params = urllib.urlencode(params_dic)
     full_url = nwa + base_uri + enc_params
     
-    http_get(full_url)
+    return http_get(full_url)
 
 # timeline: Returns the count of sessions/size/packets in discrete time intervals
 # example: 
