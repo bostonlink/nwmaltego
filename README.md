@@ -5,23 +5,20 @@ Author: David Bressler (@bostonlink)  <br/>
 Demo Video: http://a1.video3.blip.tv/0340025695473/Bostonlink-NetwitnessMaltegoIntegrationDemoNWMaltego652.m4v  <br/>
 Demo Video: http://www.pentest-labs.org/blog/netwitness-maltego-integration-demo-video  <br/>
 
-About
-------
+### About
+
 
 NWMaltego is a multi-platform python project that integrates Netwitness and Maltego together.  It allows for an analyst to graphically map Netwitness data within Maltego.  It includes several new entities and multiple transforms to pull data from Netwitness.
 
-NWmodule.py
------------
+### NWmodule.py
 
 nwmodule.py is a python module I wrote that interfaces with the Netwitness REST API.  All Maltego transforms are dependent on this module and functions within it.  It must ne within the directory that contains the Maltego transforms.
 
-Netwitness.conf
-----------------
+### Netwitness.conf
 
 The netwitness.conf file holds data about the netwitness environment, user credentials, and the location for an output directory where the file extractor transform will save an exracted file from a Netwitness session.
 
-Maltego Transforms
---------------------
+### Maltego Transforms
 
 Listing of all current Netwitness Maltego transforms and the filename and entity they are associated wtih
 ```
@@ -72,70 +69,52 @@ netwitness.NWFilename (Entity)
 netwitness.NWUserAgent (Entity)
 ```
 
-TODO
------
--Fix any issues that arise.<br/>
-
-Installation
--------------
+### Installation
 
 The only multiplatform dependency is Python 2.7.
 
 Addtionally, Netwitness's REST API must be enabled, it is not enabled by default on some appliances. Check the docs!
 
-### [Linux and OSX]
+#### [Linux and OSX]
 
-git clone the repository  
+* git clone the repository  
+* git clone git://github.com/bostonlink/nwmaltego.git
+* Move the repo to the /opt/ directory
+* `mv nwmaltego/ /opt/`
 
-git clone git://github.com/bostonlink/nwmaltego.git
-
-Then move the repo to the /opt/ directory
-
-mv nwmaltego/ /opt/
-
-Note: The Maltego configuration files have explicit references to the directories that hold the transforms.
+```Note: The Maltego configuration files have explicit references to the directories that hold the transforms.
 It is possible to change the location of the local transforms however, you will have to edit all of the imported
-transforms and edit the working directory of all the transforms.
+transforms and edit the working directory of all the transforms.```
 
-Edit the netwitness.conf file with your Netwitness environment settings
+* Edit the netwitness.conf file with your Netwitness environment settings
+* Import the import/nwmaltego-config.mtz file into Maltego and you should be good to go
 
-Import the import/nwmaltego-config.mtz file into Maltego and you should be good to go
+#### [Windows]
 
-### [Windows]
+* git clone the repository
+* git clone git://github.com/bostonlink/nwmaltego.git
 
-git clone the repository 
+```Note: If you download the zip file from github it will name the file and directory nwmaltego-master. Rename this to nwmaltego.```
 
-git clone git://github.com/bostonlink/nwmaltego.git
+* Move the repo to the root of C:\
+```Example: 'C:\nwmaltego' should store the contents of the repo.```
 
-Note: If you download the zip file from github it will name the file and directory nwmaltego-master. Rename this to nwmaltego.
-
-Then move the repo to the root of C:\
-
-Example: 'C:\nwmaltego' should store the contents of the repo.
-
-Note: The Maltego configuration files have explicit references to the directories that hold the transforms.
+```Note: The Maltego configuration files have explicit references to the directories that hold the transforms.
 It is possible to change the location of the local transforms however, you will have to edit all of the imported
-transforms and edit the working directory of all the transforms.
+transforms and edit the working directory of all the transforms.```
 
-Edit the netwitness.conf file with your Netwitness environment settings
+* Edit the netwitness.conf file with your Netwitness environment settings
+* Import the import/nwmaltego-config-windows.mtz file into Maltego and you should be good to go
 
-Import the import/nwmaltego-config-windows.mtz file into Maltego and you should be good to go
+### Special Thanks!!
 
-Notes and Issues
------------------
-I know I could have used a python library like Canari to craft the transforms but I opted not to.  I wanted to craft my own xml output so that I fully understood what maltego was parsing.
+Rich Popson (@Rastafari0728)
+* Drinking Partner
+* nwmaltego Idea Contributor
+* nwmaltego QA Tester
 
-No Issues Reported yet.
+Paterva (@Paterva)
 
-Special Thanks!!
------------------
+Nadeem Douba (@ndouba)
 
-Rich Popson (@Rastafari0728)<br/>
-	- Drinking Partner<br/>
-	- nwmaltego Idea Contributor<br/>
-	- nwmaltego QA Tester<br/>
-
-Paterva (@Paterva)<br/>
-Nadeem Douba (@ndouba)<br/>
-MassHackers (@MassHackers)<br/>
-
+MassHackers (@MassHackers)
