@@ -29,6 +29,7 @@ ip_list = []
 
 print trans_header
 for d in json_data['results']['fields']:
+    value = d['value'].decode('ascii')
     if value in ip_list:
         continue
     else:
@@ -42,7 +43,7 @@ for d in json_data['results']['fields']:
                 <Field Name="type" DisplayName="Type">%s</Field>
                 <Field Name="count" DisplayName="Count">%s</Field>
             </AdditionalFields> 
-	   </Entity>""" % (d['value'], risk_name, d['id1'], d['id2'], d['type'], d['count'])
+	   </Entity>""" % (value, risk_name, d['id1'], d['id2'], d['type'], d['count'])
     
     ip_list.append(value)
 

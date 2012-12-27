@@ -38,7 +38,8 @@ file_list = []
 
 # Print the Maltego XML Header
 print trans_header
-for d in json_data:
+for d in json_data['results']['fields']:
+    value = d['value'].decode('ascii')
     if value in file_list:
         continue
     else:
@@ -53,7 +54,7 @@ for d in json_data:
                     <Field Name="type" DisplayName="Type">%s</Field>
                     <Field Name="count" DisplayName="Count">%s</Field>
                 </AdditionalFields> 
-        </Entity>""" % (d['value'].decode('ascii'), risk_name, d['ip'], d['id1'], d['id2'], d['type'], d['count'])
+        </Entity>""" % (value, risk_name, d['ip'], d['id1'], d['id2'], d['type'], d['count'])
 
     file_list.append(value)
 

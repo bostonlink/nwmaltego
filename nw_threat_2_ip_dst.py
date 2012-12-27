@@ -36,7 +36,8 @@ json_data = json.loads(nwmodule.nwQuery(0, 0, query, 'application/json', 25))
 ip_list = []
 
 print trans_header
-for dic in fields_list:
+for d in json_data['results']['fields']:
+    value = d['value'].decode('ascii')
     if value in ip_list:
         continue
     else:
@@ -50,7 +51,7 @@ for dic in fields_list:
                 <Field Name="type" DisplayName="Type">%s</Field>
                 <Field Name="count" DisplayName="Count">%s</Field>
             </AdditionalFields> 
-	   </Entity>""" % (d['value'].decode('ascii'), risk_name, d['id1'], d['id2'], d['type'], d['count'])
+	   </Entity>""" % (value, risk_name, d['id1'], d['id2'], d['type'], d['count'])
     
     ip_list.append(value)
 

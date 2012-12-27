@@ -27,7 +27,7 @@ where_clause = 'ip.src=%s || ip.dst=%s' % (ip_entity, ip_entity)
 json_data = json.loads(nwmodule.nwValue(0, 0, 25, 'alias.host', 'application/json', where_clause))
 
 print trans_header
-for d in json_data['results']['fields']
+for d in json_data['results']['fields']:
     # Kind of a hack but hey it works!
     print """       <Entity Type="maltego.Domain">
         <Value>%s</Value>
