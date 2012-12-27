@@ -5,7 +5,6 @@
 
 # Netwitness Filetype to Filename Maltego transform
 # Author: David Bressler (@bostonlink)
-
 import sys
 import urllib2, urllib, json
 
@@ -23,79 +22,31 @@ nwmodule.nw_http_auth()
 # NW REST API Query amd results
 
 file_type = sys.argv[1]
-
 field_name = 'filename'
 where_clause = 'filetype="%s"' % file_type
-
-ret_data = nwmodule.nwValue(0, 0, 25, field_name, 'application/json', where_clause)
-
-json_data = json.loads(ret_data)
-results_dic = json_data['results']
-fields_list = results_dic['fields']
+json_data = json.loads(nwmodule.nwValue(0, 0, 25, field_name, 'application/json', where_clause))
 file_list = []
 
 # Print the Maltego XML Header
 
 print trans_header
-
-# Logic to parse the NW data returned and craft the Maltego entities
-
-for dic in fields_list:
-    
-    id1 = dic['id1']
-    id2 = dic['id2']
-    flags = dic['flags']
-    value = dic['value']
-    count = dic['count']
-    type_d = dic['type']
-    format_d = dic['format']
+for d in json_data['results']['fields']:
     # Kind of a hack but hey it works!
     if value in file_list:
-	continue
+        continue
     else:
-			
-	if value == '<none>':
-	    new_value = value.lstrip('<').rstrip('>')
-	    
-	    print """       <Entity Type="netwitness.NWFilename">
-		<Value>%s</Value>
-		<AdditionalFields>
-		    <Field Name="filetype" DisplayName="File Type">%s</Field>
-		    <Field Name="meatid1" DisplayName="Meta id1">%s</Field>
-		    <Field Name="metaid2" DisplayName="Meta id2">%s</Field>
-		    <Field Name="type" DisplayName="Type">%s</Field>
-		    <Field Name="count" DisplayName="Count">%s</Field>
-		</AdditionalFields> 
-	    </Entity>""" % (new_value, file_type, id1, id2, type_d, count)
+        print """       <Entity Type="netwitness.NWFilename">
+        <Value>%s</Value>
+            <AdditionalFields>
+                <Field Name="filetype" DisplayName="File Type">%s</Field>
+                <Field Name="meatid1" DisplayName="Meta id1">%s</Field>
+                <Field Name="metaid2" DisplayName="Meta id2">%s</Field>
+                <Field Name="type" DisplayName="Type">%s</Field>
+                <Field Name="count" DisplayName="Count">%s</Field>
+            </AdditionalFields> 
+        </Entity>""" % (d['value'].decode('ascii'), file_type, d['id1'], d['id2'], d['type'], d['count'])
     
-	elif '&' in value:
-	    new_value = value.replace('&', '%amp;')
-
-	    print """       <Entity Type="netwitness.NWFilename">
-                <Value>%s</Value>
-                <AdditionalFields>
-                    <Field Name="filetype" DisplayName="File Type">%s</Field>
-                    <Field Name="metaid1" DisplayName="Meta id1">%s</Field>
-                    <Field Name="metaid2" DisplayName="Meta id2">%s</Field>
-                    <Field Name="type" DisplayName="Type">%s</Field>
-                    <Field Name="count" DisplayName="Count">%s</Field>
-                </AdditionalFields> 
-            </Entity>""" % (new_value, file_type, id1, id2, type_d, count)
-
-	else:
-	    value = value.decode('ascii')
-	    print """       <Entity Type="netwitness.NWFilename">
-                <Value>%s</Value>
-                <AdditionalFields>
-                    <Field Name="filetype" DisplayName="File Type">%s</Field>
-                    <Field Name="metaid1" DisplayName="Meta id1">%s</Field>
-                    <Field Name="metaid2" DisplayName="Meta id2">%s</Field>
-                    <Field Name="type" DisplayName="Type">%s</Field>
-                    <Field Name="count" DisplayName="Count">%s</Field>
-                </AdditionalFields> 
-            </Entity>""" % (value, file_type, id1, id2, type_d, count)
-    
-    file_list.append(value)
+    file_list.append(d['value'].decode('ascii'))
 
 # Maltego transform XML footer
 
@@ -103,5 +54,4 @@ trans_footer = """  </Entities>
 </MaltegoTransformResponseMessage>
 </MaltegoMessage> """
 
-print trans_footer    
-
+print trans_footer

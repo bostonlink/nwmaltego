@@ -20,42 +20,28 @@ trans_header = """<MaltegoMessage>
 
 nwmodule.nw_http_auth()
 
-ip_entity = sys.argv[1]
+# NW REST API Query amd results
 
+ip_entity = sys.argv[1]
 where_clause = 'ip.src=%s || ip.dst=%s' % (ip_entity, ip_entity)
-ret_data = nwmodule.nwValue(0, 0, 25, 'risk.warning', 'application/json', where_clause)
-json_data = json.loads(ret_data)
-results_dic = json_data['results']
-fields_list = results_dic['fields']
+json_data = json.loads(nwmodule.nwValue(0, 0, 25, 'risk.warning', 'application/json', where_clause))
 
 print trans_header
-
-for dic in fields_list:
-    
-    id1 = dic['id1']
-    id2 = dic['id2']
-    flags = dic['flags']
-    value = dic['value']
-    count = dic['count']
-    type_d = dic['type']
-    format_d = dic['format']
-
+for d in json_data['results']['fields']:
     # Kind of a hack but hey it works!
     print """	    <Entity Type="netwitness.NWThreat">
-            <Value>%s</Value>
+        <Value>%s</Value>
             <AdditionalFields>
-		<Field Name="ip" DisplayName="IP Address">%s</Field>
+                <Field Name="ip" DisplayName="IP Address">%s</Field>
                 <Field Name="metaid1" DisplayName="Meta id1">%s</Field>
                 <Field Name="metaid2" DisplayName="Meta id2">%s</Field>
                 <Field Name="type" DisplayName="Type">%s</Field>
                 <Field Name="count" DisplayName="Count">%s</Field>
             </AdditionalFields> 
-        </Entity>""" % (value, ip_entity, id1, id2, type_d, count)
+    </Entity>""" % (d['value'].decode('ascii'), ip_entity, d['id1'], d['id2'], d['type'], d['count'])
 
 # Maltego transform XML footer
-
 trans_footer = """  </Entities>
 </MaltegoTransformResponseMessage>
 </MaltegoMessage> """
-
 print trans_footer

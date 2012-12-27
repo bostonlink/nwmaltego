@@ -19,20 +19,14 @@ conf.close()
 for line in config:
 
     if 'CONCENTRATOR_IP' in line:
-	
-	split = line.strip().split('=')
-	nwc_ip = split[1].lstrip("'").rstrip("'")
-
+    	split = line.strip().split('=')
+    	nwc_ip = split[1].lstrip("'").rstrip("'")
     elif 'COLLECTION_NAME' in line:
-	
-	split = line.strip().split('=')
-	col_name = split[1].lstrip("'").rstrip("'")
+    	split = line.strip().split('=')
+    	col_name = split[1].lstrip("'").rstrip("'")
 
 base_url = "nw://%s/?collection=%s&" % (nwc_ip, col_name)
-params_dic = {}
-params_dic['name'] = "Maltego"
-params_dic['where'] = where_clause
-
+params_dic = {'name': "Maltego Query", 'where': where_clause}
 enc_uri = urllib.urlencode(params_dic)
 full_url = base_url + enc_uri
 nw_path = "C:\Program Files\NetWitness\NetWitness 9.7\Investigator\NwInvestigator.exe"
@@ -42,7 +36,7 @@ nw_path = "C:\Program Files\NetWitness\NetWitness 9.7\Investigator\NwInvestigato
 print """<MaltegoMessage>
 <MaltegoTransformResponseMessage>
         <Entities>
-	</Entities>
+        </Entities>
 </MaltegoTransformResponseMessage>
 </MaltegoMessage> """
 
