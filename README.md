@@ -92,9 +92,7 @@ transforms and edit the working directory of all the transforms.
 * git clone the repository
 * git clone git://github.com/bostonlink/nwmaltego.git
 
-```Note: If you download the zip file from github it will name the file and directory nwmaltego-master. 
-
-Rename the directory to nwmaltego.```
+Note: If you download the zip file from github it will name the file and directory nwmaltego-master. Rename the directory to nwmaltego.
 
 * Move the repo to the root of C:\ - Example: `C:\nwmaltego` should store the contents of the repo.
 * Edit the netwitness.conf file with your Netwitness environment settings
