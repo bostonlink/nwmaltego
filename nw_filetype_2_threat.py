@@ -8,6 +8,7 @@
 
 import sys
 import urllib2, urllib, json
+from datetime import datetime, timedelta
 
 from lib import nwmodule
 
@@ -23,8 +24,14 @@ nwmodule.nw_http_auth()
 # NW REST API Query amd results
 
 file_type = sys.argv[1]
+
+date_t = datetime.today()
+tdelta = timedelta(days=1)
+diff = date_t - tdelta
+diff = "'" + diff.strftime('%Y-%b-%d %H:%M:%S') + "'-'" + date_t.strftime('%Y-%b-%d %H:%M:%S') + "'"
+
 field_name = 'risk.warning'
-where_clause = 'filetype="%s"' % file_type
+where_clause = '(time=%s) && filetype="%s"' % (diff, file_type)
 json_data = json.loads(nwmodule.nwValue(0, 0, 25, field_name, 'application/json', where_clause))
 file_list = []
 

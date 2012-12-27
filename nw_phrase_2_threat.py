@@ -8,6 +8,7 @@
 
 import sys
 import urllib2, urllib, json
+from datetime import datetime, timedelta
 
 from lib import nwmodule
 
@@ -23,7 +24,13 @@ nwmodule.nw_http_auth()
 # NW REST API Query amd results
 
 risk_phrase = sys.argv[1]
-threat_ip_dst = 'select risk.warning where risk.warning contains %s' % risk_phrase
+
+date_t = datetime.today()
+tdelta = timedelta(days=1)
+diff = date_t - tdelta
+diff = "'" + diff.strftime('%Y-%b-%d %H:%M:%S') + "'-'" + date_t.strftime('%Y-%b-%d %H:%M:%S') + "'"
+
+threat_ip_dst = 'select risk.warning where (time=%s) && risk.warning contains %s' % (diff, risk_phrase)
 json_data = json.loads(nwmodule.nwQuery(0, 0, threat_ip_dst, 'application/json', 25))
 ip_list = []
 

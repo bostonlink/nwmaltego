@@ -10,6 +10,7 @@
 
 import sys
 import urllib2, urllib, json
+from datetime import datetime, timedelta
 
 from lib import nwmodule
 
@@ -25,8 +26,14 @@ nwmodule.nw_http_auth()
 # NW REST API Query amd results
 
 ip_entity = sys.argv[1]
+
+date_t = datetime.today()
+tdelta = timedelta(days=1)
+diff = date_t - tdelta
+diff = "'" + diff.strftime('%Y-%b-%d %H:%M:%S') + "'-'" + date_t.strftime('%Y-%b-%d %H:%M:%S') + "'"
+
 field_name = 'filetype'
-where_clause = 'ip.dst=%s || ip.src=%s' % (ip_entity, ip_entity)
+where_clause = '(time=%s) && ip.dst=%s || ip.src=%s' % (diff, ip_entity, ip_entity)
 json_data = json.loads(nwmodule.nwValue(0, 0, 25, field_name, 'application/json', where_clause))
 file_list = []
 

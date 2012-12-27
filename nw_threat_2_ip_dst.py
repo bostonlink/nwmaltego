@@ -8,6 +8,7 @@
 
 import sys
 import urllib2, urllib, json
+from datetime import datetime, timedelta
 
 from lib import nwmodule
 
@@ -24,13 +25,19 @@ nwmodule.nw_http_auth()
     
 risk_name = sys.argv[1]
 fields = sys.argv[2].split('#')
+
+date_t = datetime.today()
+tdelta = timedelta(days=1)
+diff = date_t - tdelta
+diff = "'" + diff.strftime('%Y-%b-%d %H:%M:%S') + "'-'" + date_t.strftime('%Y-%b-%d %H:%M:%S') + "'"
+
 for i in fields:
     if 'ip' in i:
         parse = i.split('=')
         ip = parse[1]
-        query = 'select ip.dst where risk.warning="%s" && ip.src=%s' % (risk_name, ip)
+        query = 'select ip.dst where (time=%s) && risk.warning="%s" && ip.src=%s' % (diff, risk_name, ip)
     else:
-        query = 'select ip.dst where risk.warning="%s"' % risk_name
+        query = 'select ip.dst where (time=%s) && risk.warning="%s"' % (diff, risk_name)
 
 json_data = json.loads(nwmodule.nwQuery(0, 0, query, 'application/json', 25))
 ip_list = []
