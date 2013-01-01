@@ -2,9 +2,13 @@
 ==========
 
 Author: David Bressler (@bostonlink)  <br/>
+<<<<<<< HEAD
 Demo Video: http://youtu.be/3XdEtkTsrU4<br/>
 
 ### About
+=======
+Demo Video: http://youtu.be/3XdEtkTsrU4 <br/>
+>>>>>>> master
 
 
 NWMaltego is a multi-platform python project that integrates Netwitness and Maltego together.  It allows for an analyst to graphically map Netwitness data within Maltego.  It includes several new entities and multiple transforms to pull data from Netwitness.
