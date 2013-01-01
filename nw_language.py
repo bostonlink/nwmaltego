@@ -16,21 +16,6 @@ from lib import nwmodule
 nwmodule.nw_http_auth()
 
 ctype = 'application/json'
-
-nw_lang = nwmodule.nwLanguage(ctype)
-
-json_data = json.loads(nw_lang)
-results_dic = json_data['results']
-fields_list = results_dic['fields']
-
-for dic in fields_list:
-
-    id1 = dic['id1']
-    id2 = dic['id2']
-    flags = dic['flags']
-    value = dic['value']
-    count = dic['count']
-    type_d = dic['type']
-    format_d = dic['format']
-
-    print "Value: %s || Type: %s" % (value, type_d)
+json_data = json.loads(nwmodule.nwLanguage(ctype))
+for d in json_data['results']['fields']:
+    print "Value: %s || Type: %s" % (d['value'].decode('ascii'), d['type'])

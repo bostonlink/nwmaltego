@@ -8,6 +8,7 @@
 
 import sys
 import urllib2, urllib, json
+from datetime import datetime, timedelta
 
 from lib import nwmodule
 
@@ -20,40 +21,27 @@ trans_header = """<MaltegoMessage>
 
 nwmodule.nw_http_auth()
 
-# NW REST API Query
+# NW REST API Query amd results
 
 risk_phrase = sys.argv[1]
 
-threat_ip_dst = 'select risk.warning where risk.warning contains %s' % risk_phrase
+date_t = datetime.today()
+tdelta = timedelta(days=1)
+diff = date_t - tdelta
+diff = "'" + diff.strftime('%Y-%b-%d %H:%M:%S') + "'-'" + date_t.strftime('%Y-%b-%d %H:%M:%S') + "'"
 
-nwquery = nwmodule.nwQuery(0, 0, threat_ip_dst, 'application/json', 25)
-json_data = json.loads(nwquery)
-results_dic = json_data['results']
-fields_list = results_dic['fields']
-
-print trans_header
-
+threat_ip_dst = 'select risk.warning where (time=%s) && risk.warning contains %s' % (diff, risk_phrase)
+json_data = json.loads(nwmodule.nwQuery(0, 0, threat_ip_dst, 'application/json', 25))
 ip_list = []
 
-for dic in fields_list:
-
-    id1 = dic['id1']
-    id2 = dic['id2']
-    flags = dic['flags']
-    value = dic['value']
-    count = dic['count']
-    type_d = dic['type']
-    format_d = dic['format']
-    group = dic['group']
-    
+print trans_header
+for d in json_data['results']['fields']:
+    value = d['value'].decode('ascii')
     if value in ip_list:
-	continue
+        continue
     else:
-	# Kind of a hack but hey it works!
-
-	if '&' in value:
-            new_value = value.replace('&', '%amp;')
-            print """       <Entity Type="netwitness.NWThreatNOIP">
+        # Kind of a hack but hey it works!
+        print """       <Entity Type="netwitness.NWThreatNOIP">
                 <Value>%s</Value>
                 <AdditionalFields>
                     <Field Name="phrase" DisplayName="Phrase">%s</Field>
@@ -62,21 +50,8 @@ for dic in fields_list:
                     <Field Name="type" DisplayName="Type">%s</Field>
                     <Field Name="count" DisplayName="Count">%s</Field>
                 </AdditionalFields> 
-            </Entity>""" % (new_value, risk_phrase, id1, id2, type_d, count)
+        </Entity>""" % (value, risk_phrase, d['id1'], d['id2'], d['type'], d['count'])
 
-        else:
-
-	    print """       <Entity Type="netwitness.NWThreatNOIP">
-		<Value>%s</Value>
-		<AdditionalFields>
-		    <Field Name="phrase" DisplayName="Phrase">%s</Field>
-		    <Field Name="metaid1" DisplayName="Meta id1">%s</Field>
-		    <Field Name="metaid2" DisplayName="Meta id2">%s</Field>
-		    <Field Name="type" DisplayName="Type">%s</Field>
-		    <Field Name="count" DisplayName="Count">%s</Field>
-		</AdditionalFields> 
-	    </Entity>""" % (value, risk_phrase, id1, id2, type_d, count)
-    
     ip_list.append(value)
 
 # Maltego transform XML footer
@@ -84,6 +59,4 @@ for dic in fields_list:
 trans_footer = """  </Entities>
 </MaltegoTransformResponseMessage>
 </MaltegoMessage> """
-
 print trans_footer
-

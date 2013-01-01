@@ -8,6 +8,7 @@
 
 import sys
 import urllib2, urllib, json
+from datetime import datetime, timedelta
 
 from lib import nwmodule
 
@@ -20,54 +21,42 @@ trans_header = """<MaltegoMessage>
 
 nwmodule.nw_http_auth()
 
-# NW REST API Query
+# NW REST API Query amd results
 
-ip = sys.argv[1]
+ip_entity = sys.argv[1]
 
-where_clause = 'ip.src=%s || ip.dst=%s' % (ip, ip)
+date_t = datetime.today()
+tdelta = timedelta(days=1)
+diff = date_t - tdelta
+diff = "'" + diff.strftime('%Y-%b-%d %H:%M:%S') + "'-'" + date_t.strftime('%Y-%b-%d %H:%M:%S') + "'"
 
-nwquery = nwmodule.nwValue(0, 0, 10, 'client', 'application/json', where_clause)
-json_data = json.loads(nwquery)
-results_dic = json_data['results']
-fields_list = results_dic['fields']
-
-print trans_header
-
+where_clause = '(time=%s) && ip.src=%s || ip.dst=%s' % (diff, ip_entity, ip_entity)
+json_data = json.loads(nwmodule.nwValue(0, 0, 10, 'client', 'application/json', where_clause))
 ua_list = []
 
-for dic in fields_list:
-
-    id1 = dic['id1']
-    id2 = dic['id2']
-    flags = dic['flags']
-    value = dic['value']
-    count = dic['count']
-    type_d = dic['type']
-    format_d = dic['format']
-    group = dic['group'] 
-
+print trans_header
+for d in json_data['results']['fields']:
+    value = d['value'].decode('ascii')
     # Kind of a hack but hey it works!
     if value in ua_list:
-	continue
+        continue
     else:
 
         print """       <Entity Type="netwitness.NWUserAgent">
-	        <Value>%s</Value>
-	        <AdditionalFields>
-		  <Field Name="ip" DisplayName="IP Address">%s</Field>
-		  <Field Name="metaid1" DisplayName="Meta id1">%s</Field>
-		  <Field Name="metaid2" DisplayName="Meta id2">%s</Field>
-		  <Field Name="type" DisplayName="Type">%s</Field>
-		  <Field Name="count" DisplayName="Count">%s</Field>
-		</AdditionalFields> 
-	   </Entity>""" % (value, ip, id1, id2, type_d, count)
+        <Value>%s</Value>
+            <AdditionalFields>
+                <Field Name="ip" DisplayName="IP Address">%s</Field>
+                <Field Name="metaid1" DisplayName="Meta id1">%s</Field>
+                <Field Name="metaid2" DisplayName="Meta id2">%s</Field>
+                <Field Name="type" DisplayName="Type">%s</Field>
+                <Field Name="count" DisplayName="Count">%s</Field>
+            </AdditionalFields> 
+        </Entity>""" % (value, ip_entity, d['id1'], d['id2'], d['type'], d['count'])
     
     ua_list.append(value)
 
 # Maltego transform XML footer
-
 trans_footer = """  </Entities>
 </MaltegoTransformResponseMessage>
 </MaltegoMessage> """
-
 print trans_footer

@@ -4,23 +4,20 @@
 Author: David Bressler (@bostonlink)  <br/>
 Demo Video: http://youtu.be/3XdEtkTsrU4 <br/>
 
-About
-------
+### About
+
 
 NWMaltego is a multi-platform python project that integrates Netwitness and Maltego together.  It allows for an analyst to graphically map Netwitness data within Maltego.  It includes several new entities and multiple transforms to pull data from Netwitness.
 
-NWmodule.py
------------
+### NWmodule.py
 
 nwmodule.py is a python module I wrote that interfaces with the Netwitness REST API.  All Maltego transforms are dependent on this module and functions within it.  It must ne within the directory that contains the Maltego transforms.
 
-Netwitness.conf
-----------------
+### Netwitness.conf
 
 The netwitness.conf file holds data about the netwitness environment, user credentials, and the location for an output directory where the file extractor transform will save an exracted file from a Netwitness session.
 
-Maltego Transforms
---------------------
+### Maltego Transforms
 
 Listing of all current Netwitness Maltego transforms and the filename and entity they are associated wtih
 ```
@@ -71,70 +68,48 @@ netwitness.NWFilename (Entity)
 netwitness.NWUserAgent (Entity)
 ```
 
-TODO
------
--Fix any issues that arise.<br/>
-
-Installation
--------------
+### Installation
 
 The only multiplatform dependency is Python 2.7.
 
 Addtionally, Netwitness's REST API must be enabled, it is not enabled by default on some appliances. Check the docs!
 
-### [Linux and OSX]
+#### [Linux and OSX]
 
-git clone the repository  
-
-git clone git://github.com/bostonlink/nwmaltego.git
-
-Then move the repo to the /opt/ directory
-
-mv nwmaltego/ /opt/
+* git clone the repository  
+* git clone git://github.com/bostonlink/nwmaltego.git
+* Move the repo to the /opt/ directory `mv nwmaltego/ /opt/`
+* Edit the netwitness.conf file with your Netwitness environment settings
+* Import the `import/nwmaltego-config.mtz` file into Maltego and you should be good to go
 
 Note: The Maltego configuration files have explicit references to the directories that hold the transforms.
 It is possible to change the location of the local transforms however, you will have to edit all of the imported
 transforms and edit the working directory of all the transforms.
 
-Edit the netwitness.conf file with your Netwitness environment settings
+#### [Windows]
 
-Import the import/nwmaltego-config.mtz file into Maltego and you should be good to go
+* git clone the repository
+* git clone git://github.com/bostonlink/nwmaltego.git
 
-### [Windows]
+Note: If you download the zip file from github it will name the file and directory nwmaltego-master. Rename the directory to nwmaltego.
 
-git clone the repository 
-
-git clone git://github.com/bostonlink/nwmaltego.git
-
-Note: If you download the zip file from github it will name the file and directory nwmaltego-master. Rename this to nwmaltego.
-
-Then move the repo to the root of C:\
-
-Example: 'C:\nwmaltego' should store the contents of the repo.
+* Move the repo to the root of C:\ - Example: `C:\nwmaltego` should store the contents of the repo.
+* Edit the netwitness.conf file with your Netwitness environment settings
+* Import the `import/nwmaltego-config-windows.mtz` file into Maltego and you should be good to go
 
 Note: The Maltego configuration files have explicit references to the directories that hold the transforms.
 It is possible to change the location of the local transforms however, you will have to edit all of the imported
 transforms and edit the working directory of all the transforms.
 
-Edit the netwitness.conf file with your Netwitness environment settings
+### Special Thanks!!
 
-Import the import/nwmaltego-config-windows.mtz file into Maltego and you should be good to go
+Rich Popson (@Rastafari0728)
+* Drinking Partner
+* nwmaltego Idea Contributor
+* nwmaltego QA Tester
 
-Notes and Issues
------------------
-I know I could have used a python library like Canari to craft the transforms but I opted not to.  I wanted to craft my own xml output so that I fully understood what maltego was parsing.
+Paterva (@Paterva)
 
-No Issues Reported yet.
+Nadeem Douba (@ndouba)
 
-Special Thanks!!
------------------
-
-Rich Popson (@Rastafari0728)<br/>
-	- Drinking Partner<br/>
-	- nwmaltego Idea Contributor<br/>
-	- nwmaltego QA Tester<br/>
-
-Paterva (@Paterva)<br/>
-Nadeem Douba (@ndouba)<br/>
-MassHackers (@MassHackers)<br/>
-
+MassHackers (@MassHackers)
