@@ -7,10 +7,16 @@
 # Author: David Bressler (@bostonlink)
 
 import sys, urllib, subprocess
+from datetime import datetime, timedelta
 
 ip_entity = sys.argv[1]
 
-where_clause = 'ip.src=%s || ip.dst=%s' % (ip_entity, ip_entity)
+date_t = datetime.today()
+tdelta = timedelta(days=1)
+diff = date_t - tdelta
+diff = "'" + diff.strftime('%Y-%b-%d %H:%M:%S') + "'-'" + date_t.strftime('%Y-%b-%d %H:%M:%S') + "'"
+
+where_clause = '(time=%s) && ip.src=%s || ip.dst=%s' % (diff, ip_entity, ip_entity)
 
 conf = open('netwitness.conf', 'r')
 config = conf.readlines()

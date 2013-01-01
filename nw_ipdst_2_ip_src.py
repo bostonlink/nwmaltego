@@ -8,6 +8,7 @@
 
 import sys
 import urllib2, urllib, json
+from datetime import datetime, timedelta
 
 from lib import nwmodule
 
@@ -23,12 +24,19 @@ nwmodule.nw_http_auth()
 # NW REST API Query amd results
 
 ip_dst = sys.argv[1]
-threat_ip_dst = 'select ip.src where ip.dst=%s' % ip_dst
+
+date_t = datetime.today()
+tdelta = timedelta(days=1)
+diff = date_t - tdelta
+diff = "'" + diff.strftime('%Y-%b-%d %H:%M:%S') + "'-'" + date_t.strftime('%Y-%b-%d %H:%M:%S') + "'"
+
+threat_ip_dst = 'select ip.src where (time=%s) && ip.dst=%s' % (diff, ip_dst)
 json_data = json.loads(nwmodule.nwQuery(0, 0, threat_ip_dst, 'application/json', 10))
 ip_list = []
 
 print trans_header
 for d in json_data['results']['fields']:
+    value = d['value'].decode('ascii')
     # Kind of a hack but hey it works!    
     if value in ip_list:
         continue
@@ -42,12 +50,11 @@ for d in json_data['results']['fields']:
                 <Field Name="type" DisplayName="Type">%s</Field>
                 <Field Name="count" DisplayName="Count">%s</Field>
             </AdditionalFields>
-    </Entity>""" % (d['value'].decode('ascii'), ip_dst, d['id1'], d['id2'], d['type'], d['count'])
+    </Entity>""" % (value, ip_dst, d['id1'], d['id2'], d['type'], d['count'])
 
     ip_list.append(value)
 
 # Maltego transform XML footer
-
 trans_footer = """  </Entities>
 </MaltegoTransformResponseMessage>
 </MaltegoMessage> """
