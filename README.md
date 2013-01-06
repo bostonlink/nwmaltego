@@ -4,7 +4,7 @@
 Author: David Bressler (@bostonlink)  <br/>
 
 Demo Video: http://youtu.be/3XdEtkTsrU4<br/>
-Second video demo (walkthrough): http://t.co/USaWsKiO
+Second video demo (walkthrough): http://www.youtube.com/watch?v=C7u0z6I_EXE
 
 ### About
 =========
